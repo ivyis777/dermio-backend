@@ -109,11 +109,11 @@ WSGI_APPLICATION = 'project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'dermio',  # Use the name of the imported database
-        'USER': 'root',
-        'PASSWORD': 'Toor#2024',
-        'HOST': 'localhost',  # Use the appropriate host
-        'PORT': '3306',       # Default MySQL port
+        'NAME': 'dermio',  # Your database name
+        'USER': 'root',    # Your MySQL username
+        'PASSWORD': 'Toor#2024',  # Your MySQL password
+        'HOST': '35.154.40.196',  # The public IP of your EC2 instance
+        'PORT': '3306',    # Default MySQL port
     }
 }
 
