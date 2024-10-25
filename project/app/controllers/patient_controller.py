@@ -286,7 +286,8 @@ def login_user(request):
                     }
 
 
-
+                    print(jwt.__file__)
+                    print("@")
                     encoded_jwt = jwt.encode(payload, secret ,algorithm="HS256")
                     print(encoded_jwt)
                     token = jwt.decode(encoded_jwt, secret , algorithms ="HS256")
