@@ -331,7 +331,7 @@ def login_user(request):
                                         'user_mail': patient.email,
                                         'username':patient.username,
                                         "name":patient.name,
-                                        "is_creatot":patient.is_creator,
+                                        # "is_creatot":patient.is_creator,
                                         'user_id':patient.id,
                                         "company_id":1,
                                         "branch_id":1,
