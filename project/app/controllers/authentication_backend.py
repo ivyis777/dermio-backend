@@ -32,9 +32,9 @@ class CustomJWTAuthentication(BaseAuthentication):
             print("Iam here :", user)
             return (user, None)  # Return a tuple of (user, None)
 
-        except ExpiredSignatureError:
+        except jwt.ExpiredSignatureError:
             raise AuthenticationFailed('Token has expired')
-        except InvalidTokenError:
+        except jwt.InvalidTokenError:
             raise AuthenticationFailed('Invalid token')
 
 
