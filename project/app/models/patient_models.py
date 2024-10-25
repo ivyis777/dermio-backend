@@ -95,7 +95,7 @@ class Patient(models.Model):
 
     class Meta:
         managed = True
-        db_table = 'Patient'
+        db_table = 'patient'
 
 
     @property
