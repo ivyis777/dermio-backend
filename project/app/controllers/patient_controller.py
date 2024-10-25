@@ -378,7 +378,7 @@ def login_user(request):
                                                              
                                                              
                                             'user email': patient.email,
-                                            "is_creator":patient.is_creator,                                            
+                                            # "is_creator":patient.is_creator,                                            
                                             'username':patient.username,
                                             "name":patient.name,
                                             'user id':patient.id,
