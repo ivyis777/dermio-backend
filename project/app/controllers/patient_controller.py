@@ -255,7 +255,7 @@ def get_profile_page(request):
         return JsonResponse({'error': 'User not found'}, status=404)
 
     serializer = PatientUpdateSerializer(user)
-    return JsonResponse({"user_id": [serializer.data]})
+    return JsonResponse({"user_data": [serializer.data]})
 
 import jwt
 @csrf_exempt
