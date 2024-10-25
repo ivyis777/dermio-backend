@@ -288,9 +288,9 @@ def login_user(request):
 
 
                     encoded_jwt = jwt.encode(payload, secret ,algorithm="HS256")
-                    # print(encoded_jwt)
+                    print(encoded_jwt)
                     token = jwt.decode(encoded_jwt, secret , algorithms ="HS256")
-                    # print(token)
+                    print(token)
 
 
                     patient_obj =Patient.objects.get(email=email)
