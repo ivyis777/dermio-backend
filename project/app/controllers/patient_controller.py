@@ -297,7 +297,7 @@ def login_user(request):
                     patient_obj =Patient.objects.get(email=email)
                     return JsonResponse({'message': 'Login successfull',
                                         'user_mail': patient_obj.email,
-                                        "is_creatot":patient_obj.is_creator ,
+                                        # "is_creatot":patient_obj.is_creator ,
                                         'username':patient_obj.username,
                                         'user_id':patient_obj.id,
                                         "company_id":1,
