@@ -257,7 +257,7 @@ def get_profile_page(request):
     serializer = PatientUpdateSerializer(user)
     return JsonResponse({"user_id": [serializer.data]})
 
-
+import jwt
 @csrf_exempt
 def login_user(request):
 
