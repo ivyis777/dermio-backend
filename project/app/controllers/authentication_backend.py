@@ -28,12 +28,12 @@ from django.views.decorators.csrf import csrf_exempt
 #         except User.DoesNotExist:
 #             return None
 
-import jwt
 from rest_framework.authentication import BaseAuthentication
 from rest_framework.exceptions import AuthenticationFailed
 from django.conf import settings
 from django.contrib.auth import get_user_model
 
+import jwt
 from app.models.patient_models import Patient
 
 class CustomJWTAuthentication(BaseAuthentication):
@@ -59,7 +59,7 @@ class CustomJWTAuthentication(BaseAuthentication):
             user = Patient.objects.get(pk=patient_id)
             print("Iam here :",user)
             return (user, None)  # Return a tuple of (user, None)
-
+    
         except jwt.ExpiredSignatureError:
             raise AuthenticationFailed('Token has expired')
         except jwt.InvalidTokenError:
