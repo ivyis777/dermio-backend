@@ -35,6 +35,9 @@ from django.contrib.auth import get_user_model
 
 import jwt
 from app.models.patient_models import Patient
+import jwt
+from jwt.exceptions import ExpiredSignatureError, InvalidTokenError
+
 
 class CustomJWTAuthentication(BaseAuthentication):
     def authenticate(self, request):
@@ -60,9 +63,9 @@ class CustomJWTAuthentication(BaseAuthentication):
             print("Iam here :",user)
             return (user, None)  # Return a tuple of (user, None)
     
-        except jwt.ExpiredSignatureError:
+        except ExpiredSignatureError:
             raise AuthenticationFailed('Token has expired')
-        except jwt.InvalidTokenError:
+        except InvalidTokenError:
             raise AuthenticationFailed('Invalid token')
         # except User.DoesNotExist:
         #     raise AuthenticationFailed('User not found')
