@@ -6,7 +6,7 @@ from django.contrib.auth import get_user_model
 import jwt  # Make sure this is the correct jwt package (PyJWT)
 
 # Import specific exceptions from the jwt.exceptions module
-from jwt.exceptions import ExpiredSignatureError, InvalidTokenError
+# from jwt.exceptions import ExpiredSignatureError, InvalidTokenError
 
 from app.models.patient_models import Patient
 
