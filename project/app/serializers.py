@@ -206,7 +206,7 @@ class PatientUpdateSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Patient
-        fields = ['id', 'name', 'gender', 'email', 'mobile', 'address', 'city', 'country', 'state', 'pincode', 'image','age','fcm_token',"username"]
+        fields = ['id', 'name', 'gender', 'email', 'mobile', 'address', 'city', 'country', 'state', 'pincode', 'image','age',"username"]
         
         # def get_image(self, user):
         #     if user.image:
