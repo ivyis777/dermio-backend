@@ -22,7 +22,7 @@ from app.controllers.email_controller import create_notification
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
 from rest_framework.parsers import MultiPartParser, FormParser
-from django.http.HttpRequest 
+# from django.http.HttpRequest 
 
 
 @api_view(['GET', 'POST'])
