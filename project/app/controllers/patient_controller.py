@@ -275,7 +275,7 @@ def get_profile_page(request):
         return JsonResponse({'error': str(e)}, status=500)
 
     serializer = PatientUpdateSerializer(user)
-    return Response({"user_data": [serializer.data]})
+    return Response({"user_data": [serializer.data],"status":"200"}, status=200)
 import jwt
 @csrf_exempt
 def login_user(request):
