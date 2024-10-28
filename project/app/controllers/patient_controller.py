@@ -243,20 +243,38 @@ from rest_framework.decorators import api_view, authentication_classes,permissio
 @permission_classes([IsAuthenticated])
 @api_view(['GET'])
 
+# def get_profile_page(request):
+
+#     patient = request.user
+
+#     try:
+#         user = Patient.objects.get(id=patient.id)
+#     except json.JSONDecodeError:
+#         return JsonResponse({"error": "Invalid JSON format", "status": "402"})
+#     except Patient.DoesNotExist:
+#         return JsonResponse({'error': 'User not found'}, status=404)
+#     except Exception as e:
+#         return JsonResponse({'error': str(e)}, status=500)
+
+#     serializer = PatientUpdateSerializer(user)
+#     return JsonResponse({"user_data": [serializer.data]})
+
+@api_view(['GET'])
 def get_profile_page(request):
+    if not request.user.is_authenticated:
+        return JsonResponse({"error": "Unauthorized access"}, status=401)
 
     patient = request.user
 
     try:
         user = Patient.objects.get(id=patient.id)
-    except json.JSONDecodeError:
-        return JsonResponse({"error": "Invalid JSON format", "status": "402"})
     except Patient.DoesNotExist:
         return JsonResponse({'error': 'User not found'}, status=404)
+    except Exception as e:
+        return JsonResponse({'error': str(e)}, status=500)
 
     serializer = PatientUpdateSerializer(user)
     return JsonResponse({"user_data": [serializer.data]})
-
 import jwt
 @csrf_exempt
 def login_user(request):
