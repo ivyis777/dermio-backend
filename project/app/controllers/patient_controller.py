@@ -22,6 +22,7 @@ from app.controllers.email_controller import create_notification
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
 from rest_framework.parsers import MultiPartParser, FormParser
+from django.http.HttpRequest 
 
 
 @api_view(['GET', 'POST'])
@@ -240,8 +241,8 @@ def update_profile_page(request):
 
 from rest_framework.decorators import api_view, authentication_classes,permission_classes
 
-@permission_classes([IsAuthenticated])
-@api_view(['GET'])
+# @permission_classes([IsAuthenticated])
+# @api_view(['GET'])
 
 # def get_profile_page(request):
 
