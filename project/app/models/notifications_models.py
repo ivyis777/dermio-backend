@@ -11,7 +11,7 @@ class Notification(models.Model):
     created_at = models.DateTimeField(auto_now=True)
     updated_at = models.DateTimeField(auto_now=False,null=True)
     updated_by = models.CharField(max_length=40, unique=True,null=True)
-    is_active = models.BooleanField(default=True)
+    is_active = models.BooleanField(default=True)   
 
     def _str_(self):
         return self.title

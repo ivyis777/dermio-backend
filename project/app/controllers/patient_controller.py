@@ -188,16 +188,21 @@ class BookAppointmentDetail(APIView):
 
 
 @api_view(['POST'])
+
 def update_profile_page(request):
+    if request.method != 'POST':
+        return JsonResponse({'error': 'Only POST requests are allowed'}, status=405)
+
     try:
         # Extract image file if present in request
-        image = None
-        if request.FILES.get('image'):
-            image = request.FILES['image']
+        image = request.FILES.get('image', None)
 
         # Extract JSON data from form-data
-        data = json.loads(request.POST.get('data', '{}'))
-        print(data)
+        data = request.POST.get('data', '{}')
+        try:
+            data = json.loads(data)
+        except json.JSONDecodeError:
+            return JsonResponse({'error': 'Invalid JSON format'}, status=400)
 
         # Check if user ID is provided
         user_id = data.get('user_id')
@@ -232,12 +237,63 @@ def update_profile_page(request):
                 message = "The following fields were updated: " + ", ".join(changed_fields)
                 create_notification(user_id, "User Profile Update", message)
 
-            return JsonResponse({'message': 'User updated successfully', "changed_fields":changed_fields, 'status': '200'}, status=200)
+            return JsonResponse({'message': 'User updated successfully', "changed_fields": changed_fields, 'status': '200'}, status=200)
         
         else:
             return JsonResponse({'errors': serializer.errors}, status=400)
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=500)
+
+# def update_profile_page(request):
+#     try:
+#         # Extract image file if present in request
+#         image = None
+#         if request.FILES.get('image'):
+#             image = request.FILES['image']
+
+#         # Extract JSON data from form-data
+#         data = json.loads(request.POST.get('data', '{}'))
+#         print(data)
+
+#         # Check if user ID is provided
+#         user_id = data.get('user_id')
+#         if not user_id:
+#             return JsonResponse({'error': 'User ID is required'}, status=400)
+
+#         # Check if user exists
+#         try:
+#             user = Patient.objects.get(id=user_id)
+#         except Patient.DoesNotExist:
+#             return JsonResponse({"message": "User not found", "status": 400}, status=400)
+
+#         # Track changes
+#         changed_fields = []
+
+#         # Update user profile if user exists
+#         serializer = PatientUpdateSerializer(user, data=data, partial=True)
+#         if serializer.is_valid():
+#             # Save image if provided
+#             if image:
+#                 user.image = image
+#                 changed_fields.append('Profile picture is changed')
+#             # Save other changes
+#             for field, value in data.items():
+#                 if hasattr(user, field) and getattr(user, field) != value:
+#                     changed_fields.append(f"{field} changed to {value}")
+
+#             serializer.save()
+
+#             # Create a notification with the changes
+#             if changed_fields:
+#                 message = "The following fields were updated: " + ", ".join(changed_fields)
+#                 create_notification(user_id, "User Profile Update", message)
+
+#             return JsonResponse({'message': 'User updated successfully', "changed_fields":changed_fields, 'status': '200'}, status=200)
+        
+#         else:
+#             return JsonResponse({'errors': serializer.errors}, status=400)
+#     except Exception as e:
+#         return JsonResponse({'error': str(e)}, status=500)
 
 from rest_framework.decorators import api_view, authentication_classes,permission_classes
 
