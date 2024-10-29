@@ -62,6 +62,7 @@ def handle_otp_request(recipient, purpose, is_resend):
         otp_entry.otp = otp
         otp_entry.created_at = timezone.now()
         otp_entry.delete_at = timezone.now() + timedelta(minutes=5)
+        otp_entry.is_resend=True
         otp_entry.resend_count += 1
         otp_entry.save()
     else:
