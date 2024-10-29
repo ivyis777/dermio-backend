@@ -17,7 +17,7 @@ from app.serializers import StaffMetaDataSerializer,TopDoctorsSerializer,SlotSer
 
 
 
-
+from app.models.Staff_models import Slot
 from datetime import timedelta, time, datetime
 # from .models import Slot, Doctor
 
