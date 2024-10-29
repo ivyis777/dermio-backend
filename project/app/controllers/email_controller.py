@@ -50,6 +50,11 @@ def handle_otp_request(recipient, purpose, is_resend):
     otp_exist = user_otp.objects.filter(user_email=recipient, purpose=purpose).exists()
     otp = generate_random_otp()
 
+    if not otp_exist and is_resend:
+            return JsonResponse({'message': f'Otp for {purpose} not sent yet, Please Try Sending', 'status': '429'}, status=429)
+         
+         
+
     # Check for resend conditions if it's a resend request
     if is_resend and otp_exist:
         otp_entry = user_otp.objects.get(user_email=recipient, purpose=purpose)
@@ -95,6 +100,8 @@ def send_otp(request):
 
         if not recipient or not purpose:
             return JsonResponse({'message': 'Email and purpose are required', 'status': '400'}, status=400)
+        
+        
 
         # Handle different purposes with common validation
         if purpose == 'signup':
