@@ -76,7 +76,7 @@ def handle_otp_request(recipient, purpose, is_resend):
     # Send OTP email
    # Construct email subject and body in one line with lambda expressions
     subject = (lambda p, r: f"{'Resend ' if r else ''}OTP for {p.capitalize()}")(purpose, is_resend)
-    body = (lambda p, r, o: f"{'This is your resend OTP for ' if r else 'Your '} {p.capitalize()} is: {o}")(purpose, is_resend, otp)
+    body = (lambda p, r, o: f"{'This is your resend OTP for ' if r else 'Your '} {p.capitalize()} : {o}")(purpose, is_resend, otp)
 
     if not send_otp_email(subject, body, recipient):
         return JsonResponse({'message': 'Failed to send OTP email', 'status': '500'}, status=500)
