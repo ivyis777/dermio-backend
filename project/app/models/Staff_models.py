@@ -102,8 +102,8 @@ class Staff_MetaData(models.Model):
 
 
 
-    class Meta:
-        db_table="dermio.staff_MetaData"
+    # class Meta:
+    #     db_table="dermio.staff_MetaData"
 
 
 class Top_doctors(models.Model):
