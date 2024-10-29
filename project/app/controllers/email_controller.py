@@ -46,82 +46,65 @@ def send_otp_email(subject, body, recipient):
                 print(f"Error sending email: {str(e)}")
                 return False
 
+def handle_otp_request(recipient, purpose, is_resend):
+    otp_exist = user_otp.objects.filter(user_email=recipient, purpose=purpose).exists()
+    otp = generate_random_otp()
+
+    # Check for resend conditions if it's a resend request
+    if is_resend and otp_exist:
+        otp_entry = user_otp.objects.get(user_email=recipient, purpose=purpose)
+        if otp_entry.resend_count >= 3:
+            return JsonResponse({'message': 'Resend limit reached', 'status': '429'}, status=429)
+        if timezone.now() < otp_entry.created_at + timedelta(minutes=1):
+            return JsonResponse({'message': 'Wait before requesting another OTP', 'status': '429'}, status=429)
+
+        # Update OTP entry for resend
+        otp_entry.otp = otp
+        otp_entry.created_at = timezone.now()
+        otp_entry.delete_at = timezone.now() + timedelta(minutes=5)
+        otp_entry.resend_count += 1
+        otp_entry.save()
+    else:
+        # Create a new OTP entry for the first-time request
+        user_otp.objects.create(
+            user_email=recipient,
+            otp=otp,
+            purpose=purpose,
+            delete_at=timezone.now() + timedelta(minutes=5)
+        )
+
+    # Send OTP email
+   # Construct email subject and body in one line with lambda expressions
+    subject = (lambda p, r: f"{'Resend ' if r else ''}OTP for {p.capitalize()}")(purpose, is_resend)
+    body = (lambda p, r, o: f"{'This is your resend OTP for ' if r else 'Your '} {p.capitalize()} is: {o}")(purpose, is_resend, otp)
+
+    if not send_otp_email(subject, body, recipient):
+        return JsonResponse({'message': 'Failed to send OTP email', 'status': '500'}, status=500)
+
+    return JsonResponse({'message': 'OTP has been sent to your email', 'status': '200'}, status=200)
 
 def send_otp(request):
     try:
-        # Parse and validate request
         data = json.loads(request.body)
         recipient = data.get('email')
         purpose = data.get('purpose')
-        
+        is_resend = data.get('is_resend', False)
+
         if not recipient or not purpose:
             return JsonResponse({'message': 'Email and purpose are required', 'status': '400'}, status=400)
-        
-        otp = generate_random_otp()  # Assuming this function generates a random OTP
-        print("Generated OTP:", otp)
 
-        # Helper function to send OTP email
-        
-            
-        otp_exist=user_otp.objects.filter(user_email=recipient,purpose=purpose).exists()
-        print("otp exists : ")
-        
-        
-        # Handle different purposes
+        # Handle different purposes with common validation
         if purpose == 'signup':
-            exists = Patient.objects.filter(email=recipient).exists()
-            if exists:
+            if Patient.objects.filter(email=recipient).exists():
                 return JsonResponse({'message': 'Email already registered', 'status': '401'}, status=401)
-            if not send_otp_email("Your One-Time Password (OTP) for Signup", f"Your Signup OTP is: {otp}", recipient):
-                
-                return JsonResponse({'message': 'Failed to send OTP email', 'status': '500'}, status=500)
-            if otp_exist:
-
-                user=user_otp.objects.get(user_email=recipient,purpose=purpose)
-                user.otp=otp
-                user.save()
-                return JsonResponse({'message': 'OTP has been sent to your email', 'status': '200'}, status=200)
-
-
-            else:
-                otp_save=user_otp.objects.create(user_email=recipient,otp=otp,purpose=purpose,delete_at=timezone.now() + timedelta(minutes=1))
-                
-                return JsonResponse({'message': 'OTP has been sent to your email', 'status': '200'}, status=200)
-
         elif purpose == 'login':
-            if not send_otp_email("Your One-Time Password (OTP) for Login", f"Your login OTP is: {otp}", recipient):
-                return JsonResponse({'message': 'Failed to send OTP email', 'status': '500'}, status=500)
-
-            print(otp_exist)
-            if otp_exist:
-
-                user=user_otp.objects.get(user_email=recipient,purpose=purpose)
-                user.otp=otp
-                user.save()
-                return JsonResponse({'message': 'OTP has been sent to your email', 'status': '200'}, status=200)
-
-            else:
-                otp_save=user_otp.objects.create(user_email=recipient,otp=otp,purpose=purpose,delete_at=timezone.now() + timedelta(minutes=1))
-                return JsonResponse({'message': 'OTP has been sent to your email', 'status': '200'}, status=200)
-
-        elif purpose == 'resend':
-            
-
-            if not send_otp_email("Your One-Time Password (OTP) for Resend OTP", f"Your Resend OTP is: {otp}", recipient):
-                return JsonResponse({'message': 'Failed to send OTP email', 'status': '500'}, status=500)
-            if otp_exist:
-
-                user=user_otp.objects.get(user_email=recipient,purpose=purpose)
-                user.otp=otp
-                user.save()
-                return JsonResponse({'message': 'OTP has been sent to your email', 'status': '200'}, status=200)
-
-            else:
-                otp_save=user_otp.objects.create(user_email=recipient,otp=otp,purpose=purpose)
-                return JsonResponse({'message': 'OTP has been resent to your email', 'status': '200'}, status=200)
-
+            if not Patient.objects.filter(email=recipient).exists():
+                return JsonResponse({'message': 'Email not registered', 'status': '404'}, status=404)
         else:
             return JsonResponse({'message': 'Invalid purpose', 'status': '400'}, status=400)
+
+        # Call the helper function to handle OTP generation, resend, and email sending
+        return handle_otp_request(recipient, purpose, is_resend)
 
     except json.JSONDecodeError:
         return JsonResponse({'message': 'Invalid JSON format', 'status': '400'}, status=400)
@@ -132,9 +115,87 @@ def send_otp(request):
     except IntegrityError as ie:
         return JsonResponse({'message': 'Database error', 'status': '500'}, status=500)
     except Exception as error:
-        # Log the error if necessary
         print(f"Unexpected error: {str(error)}")
         return JsonResponse({'message': 'An unexpected error occurred', 'status': '500'}, status=500)
+
+
+
+
+# def send_otp(request):
+#     try:
+#         # Parse and validate request
+#         data = json.loads(request.body)
+#         recipient = data.get('email')
+#         purpose = data.get('purpose')
+#         is_resend=data.get('is_resend')
+        
+#         if not recipient or not purpose:
+#             return JsonResponse({'message': 'Email and purpose are required', 'status': '400'}, status=400)
+        
+#         otp = generate_random_otp()  # Assuming this function generates a random OTP
+#         print("Generated OTP:", otp)
+
+#         # Helper function to send OTP email
+        
+            
+#         otp_exist=user_otp.objects.filter(user_email=recipient,purpose=purpose).exists()
+#         print("otp exists : ")
+        
+        
+#         # Handle different purposes
+#         if purpose == 'signup':
+#             exists = Patient.objects.filter(email=recipient).exists()
+#             if exists:
+#                 return JsonResponse({'message': 'Email already registered', 'status': '401'}, status=401)
+#             if not send_otp_email("Your One-Time Password (OTP) for Signup", f"Your Signup OTP is: {otp}", recipient):
+                
+#                 return JsonResponse({'message': 'Failed to send OTP email', 'status': '500'}, status=500)
+#             if otp_exist:
+
+#                 user=user_otp.objects.get(user_email=recipient,purpose=purpose)
+#                 user.otp=otp
+#                 user.save()
+#                 return JsonResponse({'message': 'OTP has been sent to your email', 'status': '200'}, status=200)
+
+
+#             else:
+#                 otp_save=user_otp.objects.create(user_email=recipient,otp=otp,purpose=purpose,delete_at=timezone.now() + timedelta(minutes=1))
+                
+#                 return JsonResponse({'message': 'OTP has been sent to your email', 'status': '200'}, status=200)
+
+#         elif purpose == 'login':
+#             if not send_otp_email("Your One-Time Password (OTP) for Login", f"Your login OTP is: {otp}", recipient):
+#                 return JsonResponse({'message': 'Failed to send OTP email', 'status': '500'}, status=500)
+
+#             print(otp_exist)
+#             if otp_exist:
+
+#                 user=user_otp.objects.get(user_email=recipient,purpose=purpose)
+#                 user.otp=otp
+#                 user.save()
+#                 return JsonResponse({'message': 'OTP has been sent to your email', 'status': '200'}, status=200)
+
+#             else:
+#                 otp_save=user_otp.objects.create(user_email=recipient,otp=otp,purpose=purpose,delete_at=timezone.now() + timedelta(minutes=1))
+#                 return JsonResponse({'message': 'OTP has been sent to your email', 'status': '200'}, status=200)
+
+       
+
+#         else:
+#             return JsonResponse({'message': 'Invalid purpose', 'status': '400'}, status=400)
+
+#     except json.JSONDecodeError:
+#         return JsonResponse({'message': 'Invalid JSON format', 'status': '400'}, status=400)
+#     except KeyError as ke:
+#         return JsonResponse({'message': f'Missing key: {str(ke)}', 'status': '400'}, status=400)
+#     except ValidationError as ve:
+#         return JsonResponse({'message': f'Invalid data: {str(ve)}', 'status': '400'}, status=400)
+#     except IntegrityError as ie:
+#         return JsonResponse({'message': 'Database error', 'status': '500'}, status=500)
+#     except Exception as error:
+#         # Log the error if necessary
+#         print(f"Unexpected error: {str(error)}")
+#         return JsonResponse({'message': 'An unexpected error occurred', 'status': '500'}, status=500)
 
 # Helper function to validate email format
 # import re
