@@ -363,7 +363,7 @@ def update_user_reg(request):
         #     staff_metadata.save()
         # except Staff_MetaData.DoesNotExist:
             # Handle if metadata doesn't exist for the user
-            pass
+            
 
         # Return the updated user data
         return JsonResponse({
