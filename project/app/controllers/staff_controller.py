@@ -199,10 +199,11 @@ class AvailableSlotsView(APIView):
 class StaffMetaDataUpdateOrCreateView(APIView):
     def post(self, request, staff_meta_id=None):
         # Check if staff_meta_id is provided (for update)
+        print(staff_meta_id)
         if staff_meta_id:
-            # try:
-            #     staff_meta = Staff_MetaData.objects.get(staff_meta_id=staff_meta_id)
-            # except Staff_MetaData.DoesNotExist:
+            try:
+                staff_meta = Staff_MetaData.objects.get(staff_meta_id=staff_meta_id)
+            except Staff_MetaData.DoesNotExist:
                 # If not found, proceed with creating a new entry
                 staff_meta = None
         else:
