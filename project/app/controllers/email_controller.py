@@ -61,7 +61,7 @@ def handle_otp_request(recipient, purpose, is_resend):
         if otp_entry.resend_count >= 3:
             return JsonResponse({'message': 'Resend limit reached', 'status': '429'}, status=429)
         if timezone.now() < otp_entry.created_at + timedelta(minutes=1):
-            return JsonResponse({'message': 'Wait before requesting another OTP', 'status': '429'}, status=429)
+            return JsonResponse({'message': 'Wait before requesting another OTP', 'status': '430'}, status=430)
 
         # Update OTP entry for resend
         otp_entry.otp = otp
