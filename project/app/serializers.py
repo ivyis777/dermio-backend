@@ -4,6 +4,7 @@ from rest_framework import serializers
 from app.models.Staff_models import *
 from app.models.misc import *
 from app.models.patient_models import*
+from app.models.Staff_models import Slot
 
 
 from app.models.notifications_models import Notification
