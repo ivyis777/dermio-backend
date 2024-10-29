@@ -90,6 +90,8 @@ def send_otp(request):
         purpose = data.get('purpose')
         is_resend = data.get('is_resend', False)
 
+        print(purpose , is_resend)
+
         if not recipient or not purpose:
             return JsonResponse({'message': 'Email and purpose are required', 'status': '400'}, status=400)
 
