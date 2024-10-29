@@ -1,6 +1,6 @@
 from datetime import timezone
 from django.db import models
-from app.models.Staff_models import Staff_Allotment,Staff_MetaData,Slot
+from app.models.Staff_models import Staff_Allotment,Slot
 
 
 
