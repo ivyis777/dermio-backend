@@ -17,7 +17,7 @@ from app.serializers import StaffMetaDataSerializer,TopDoctorsSerializer,SlotSer
 
 
 
-from app.models.Staff_models import Slot
+# from app.models.Staff_models import Slot
 from datetime import timedelta, time, datetime
 # from .models import Slot, Doctor
 
@@ -133,14 +133,14 @@ def get_staff_by_department(request):
         return Response({"error": "Department parameter is required","status":"400"}, status=400)
  
     # Filter staff by department
-    staff_metadata = Staff_MetaData.objects.filter(department=departments)  # case-insensitive filter
-    print(staff_metadata)
-    if not staff_metadata.exists():
-        return Response({"message": "No staff found in the given department","status":"400"}, status=400)
+    # staff_metadata = Staff_MetaData.objects.filter(department=departments)  # case-insensitive filter
+    # print(staff_metadata)
+    # if not staff_metadata.exists():
+    #     return Response({"message": "No staff found in the given department","status":"400"}, status=400)
 
-    # Serialize the data
-    serializer = StaffMetaDataSerializer(staff_metadata, many=True)
-    return Response(serializer.data, status=status.HTTP_200_OK)
+    # # Serialize the data
+    # serializer = StaffMetaDataSerializer(staff_metadata, many=True)
+    # return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 
@@ -200,9 +200,9 @@ class StaffMetaDataUpdateOrCreateView(APIView):
     def post(self, request, staff_meta_id=None):
         # Check if staff_meta_id is provided (for update)
         if staff_meta_id:
-            try:
-                staff_meta = Staff_MetaData.objects.get(staff_meta_id=staff_meta_id)
-            except Staff_MetaData.DoesNotExist:
+            # try:
+            #     staff_meta = Staff_MetaData.objects.get(staff_meta_id=staff_meta_id)
+            # except Staff_MetaData.DoesNotExist:
                 # If not found, proceed with creating a new entry
                 staff_meta = None
         else:
@@ -244,9 +244,9 @@ class TopDoctorsListView(generics.ListCreateAPIView):
 class StaffMetaDataByDesignationView(generics.ListAPIView):
     serializer_class = StaffMetaDataSerializer
 
-    def get_queryset(self):
-        designation = self.kwargs['profession']
-        return Staff_MetaData.objects.filter(profession=designation)
+    # def get_queryset(self):
+    #     designation = self.kwargs['profession']
+    #     return Staff_MetaData.objects.filter(profession=designation)
 
 
 def get_meta_data():
@@ -275,22 +275,22 @@ def get_all_staff_users_with_metadata(request):
             }
             
             # Fetch related metadata
-            metadata = Staff_MetaData.objects.filter(staff_id=user.staff_id).first()
-            if metadata:
-                metadata_data = {
-                    "name": metadata.name,
-                    "gender": metadata.gender,
-                    "date_of_birth": metadata.date_of_birth,
-                    "age": metadata.age,
-                    "registration_number": metadata.registration_number,
-                    "consulting_fee": str(metadata.consulting_fee),
-                    "permanent_address": metadata.permanent_address,
-                    "speciality": metadata.speciality,
-                    "designation": metadata.designation
-                }
-                user_data['metadata'] = metadata_data
-            else:
-                user_data['metadata'] = None  # If no metadata found
+            # metadata = Staff_MetaData.objects.filter(staff_id=user.staff_id).first()
+            # if metadata:
+            #     metadata_data = {
+            #         "name": metadata.name,
+            #         "gender": metadata.gender,
+            #         "date_of_birth": metadata.date_of_birth,
+            #         "age": metadata.age,
+            #         "registration_number": metadata.registration_number,
+            #         "consulting_fee": str(metadata.consulting_fee),
+            #         "permanent_address": metadata.permanent_address,
+            #         "speciality": metadata.speciality,
+            #         "designation": metadata.designation
+            #     }
+                # user_data['metadata'] = metadata_data
+            # else:
+                # user_data['metadata'] = None  # If no metadata found
             
             users_data.append(user_data)
 
@@ -340,28 +340,28 @@ def update_user_reg(request):
 
         # Update Staff_MetaData object if it exists
         try:
-            staff_metadata = Staff_MetaData.objects.get(staff_id=user_object)
+            # staff_metadata = Staff_MetaData.objects.get(staff_id=user_object)
             # Update metadata fields based on role
-            if is_doctor:
-                staff_metadata.name = data.get('name', staff_metadata.name)
-                staff_metadata.speciality = data.get('speciality', staff_metadata.speciality)
-                staff_metadata.designation = data.get('designation', staff_metadata.designation)
-                staff_metadata.registration_number = data.get('registration_number', staff_metadata.registration_number)
-                staff_metadata.consulting_fee = data.get('consulting_fee', staff_metadata.consulting_fee)
-                staff_metadata.permanent_address = data.get('permanent_address', staff_metadata.permanent_address)
-                staff_metadata.age = data.get('age', staff_metadata.age)
-                staff_metadata.date_of_birth = data.get('date_of_birth', staff_metadata.date_of_birth)
-                staff_metadata.gender = data.get('gender', staff_metadata.gender)
+            # if is_doctor:
+            #     staff_metadata.name = data.get('name', staff_metadata.name)
+            #     staff_metadata.speciality = data.get('speciality', staff_metadata.speciality)
+            #     staff_metadata.designation = data.get('designation', staff_metadata.designation)
+            #     staff_metadata.registration_number = data.get('registration_number', staff_metadata.registration_number)
+            #     staff_metadata.consulting_fee = data.get('consulting_fee', staff_metadata.consulting_fee)
+            #     staff_metadata.permanent_address = data.get('permanent_address', staff_metadata.permanent_address)
+            #     staff_metadata.age = data.get('age', staff_metadata.age)
+            #     staff_metadata.date_of_birth = data.get('date_of_birth', staff_metadata.date_of_birth)
+            #     staff_metadata.gender = data.get('gender', staff_metadata.gender)
                 
                 
-            elif is_nurse or is_pharmacist or is_receptionist:
-                staff_metadata.name = data.get('name', staff_metadata.name)
-                staff_metadata.age = data.get('age', staff_metadata.age)
-                staff_metadata.gender = data.get('gender', staff_metadata.gender)
-                staff_metadata.designation = data.get('designation', staff_metadata.designation)
-                staff_metadata.permanent_address = data.get('permanent_address', staff_metadata.permanent_address)
-            staff_metadata.save()
-        except Staff_MetaData.DoesNotExist:
+        #     elif is_nurse or is_pharmacist or is_receptionist:
+        #         staff_metadata.name = data.get('name', staff_metadata.name)
+        #         staff_metadata.age = data.get('age', staff_metadata.age)
+        #         staff_metadata.gender = data.get('gender', staff_metadata.gender)
+        #         staff_metadata.designation = data.get('designation', staff_metadata.designation)
+        #         staff_metadata.permanent_address = data.get('permanent_address', staff_metadata.permanent_address)
+        #     staff_metadata.save()
+        # except Staff_MetaData.DoesNotExist:
             # Handle if metadata doesn't exist for the user
             pass
 

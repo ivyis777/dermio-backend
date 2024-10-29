@@ -185,9 +185,9 @@ class TopDoctorsSerializer(serializers.ModelSerializer):
 
 
 class StaffMetaDataSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Staff_MetaData
-        fields = '__all__' 
+    # class Meta:
+    #     model = Staff_MetaData
+    #     fields = '__all__' 
 
 # from .models import (
 #                      Staff_Allotment,
