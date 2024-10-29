@@ -7,7 +7,7 @@ urlpatterns = [
     path('top-doctors/', TopDoctorsListView.as_view(), name='top-doctors-list'),
     path('staff_meta/', StaffMetaDataUpdateOrCreateView.as_view(), name='create-staff-meta'),
     path('staff_meta/<int:staff_meta_id>/', StaffMetaDataUpdateOrCreateView.as_view(), name='update-staff-meta'),
-    path('api/staff-by-department/', get_staff_by_department, name='get_staff_by_department'),
+    path('api/staff-by-department/<str:department>/', get_staff_by_department, name='get_staff_by_department'),
     path('check_availabity/', check_availability, name='check_doctor_availability'),
 
 
