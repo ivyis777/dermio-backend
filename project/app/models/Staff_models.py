@@ -103,7 +103,7 @@ class Staff_MetaData(models.Model):
 
 
     class Meta:
-        db_table="staff_MetaData"
+        db_table="Staff_MetaData"
 
 
 class Top_doctors(models.Model):
