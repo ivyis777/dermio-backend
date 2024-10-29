@@ -76,7 +76,7 @@ class Slot(models.Model):
     on_leave=models.BooleanField(default=False)
 
     class Meta:
-        db_table="Slots"
+        db_table="slots"
 
 class Staff_MetaData(models.Model):
     staff_meta_id = models.BigAutoField(primary_key=True,unique=True)
