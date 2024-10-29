@@ -13,3 +13,4 @@ class user_otp(models.Model):
     created_at = models.DateTimeField(default=timezone.now)
     delete_at = models.DateTimeField(default=timezone.now)
     purpose=models.CharField(max_length=15)
+    is_resend=models.BooleanField(default=False,null=True,blank=True)
