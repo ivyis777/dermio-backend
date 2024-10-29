@@ -126,7 +126,7 @@ def get_staff_by_department(request):
     print(departments,"Cardiology",departments=="Cardiology")
 
     if departments is None:
-        return Response({"error": "Department parameter is required"}, status=status.HTTP_400_BAD_REQUEST)
+        return Response({"error": "Department parameter is required","status":"400"}, status=400)
  
     # Filter staff by department
     staff_metadata = Staff_MetaData.objects.filter(department=departments)  # case-insensitive filter
