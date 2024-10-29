@@ -339,7 +339,7 @@ def update_user_reg(request):
         user_object.save()
 
         # Update Staff_MetaData object if it exists
-        try:
+        # try:
             # staff_metadata = Staff_MetaData.objects.get(staff_id=user_object)
             # Update metadata fields based on role
             # if is_doctor:
