@@ -551,8 +551,6 @@ def register_user(request):
         return JsonResponse({'message': 'Server Error', 'status': '500','error':error}, status=500)
 
 
-
-
 @api_view(['POST'])
 def delete_patient(request, patient_id):
     try:
