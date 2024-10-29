@@ -200,7 +200,7 @@ class StaffMetaDataSerializer(serializers.ModelSerializer):
 # 
 # 
 from app.models.patient_models import Patient_Appointment,Patient_Registration,Patient
-from app.models.Staff_models import Staff_Allotment,Staff_MetaData
+from app.models.Staff_models import Staff_Allotment
 
 
 
