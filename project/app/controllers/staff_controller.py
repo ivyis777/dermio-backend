@@ -245,9 +245,9 @@ class TopDoctorsListView(generics.ListCreateAPIView):
 class StaffMetaDataByDesignationView(generics.ListAPIView):
     serializer_class = StaffMetaDataSerializer
 
-    # def get_queryset(self):
-    #     designation = self.kwargs['profession']
-    #     return Staff_MetaData.objects.filter(profession=designation)
+    def get_queryset(self):
+        designation = self.kwargs['profession']
+        return Staff_MetaData.objects.filter(profession=designation)
 
 
 def get_meta_data():
