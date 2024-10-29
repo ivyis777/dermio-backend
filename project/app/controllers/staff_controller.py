@@ -132,7 +132,7 @@ def get_staff_by_department(request):
     staff_metadata = Staff_MetaData.objects.filter(department=departments)  # case-insensitive filter
     print(staff_metadata)
     if not staff_metadata.exists():
-        return Response({"message": "No staff found in the given department"}, status=status.HTTP_404_NOT_FOUND)
+        return Response({"message": "No staff found in the given department","status":"400"}, status=400)
 
     # Serialize the data
     serializer = StaffMetaDataSerializer(staff_metadata, many=True)
