@@ -62,56 +62,60 @@ def generate_time_slots(doctor, date, start_time, end_time, slot_duration=15):
 
 @api_view(['POST'])
 def check_availability(request):
+
     # print("Entered check availability API")
     
-    # Parse the request data
-    data = json.loads(request.body)
-    staff_id = data.get('staff_id')
-    date_str = data.get("date")  # Expecting a date in ISO format like "2024-12-30"
-    start_time_str = data.get("start_time")  # This should be a string like "09:00"
-    end_time_str = data.get("end_time")  # This should be a string like "17:00"
-
-    # Convert date string to a date object
     try:
-        slot_date = date.fromisoformat(date_str)  # Convert the date string to a `date` object
-    except ValueError:
-        return JsonResponse({"error": "Invalid date format. Please use ISO format (YYYY-MM-DD)."}, status=400)
+        # Parse the request data
+        data = json.loads(request.body)
+        staff_id = data.get('staff_id')
+        date_str = data.get("date")  # Expecting a date in ISO format like "2024-12-30"
+        start_time_str = data.get("start_time")  # This should be a string like "09:00"
+        end_time_str = data.get("end_time")  # This should be a string like "17:00"
 
-    # Parse start_time and end_time
-    try:
-        start_time = time.fromisoformat(start_time_str) if start_time_str else time(9, 0)
-        end_time = time.fromisoformat(end_time_str) if end_time_str else time(17, 0)
-    except ValueError:
-        return JsonResponse({"error": "Invalid time format. Please use ISO time format (HH:MM)."}, status=400)
+        # Convert date string to a date object
+        try:
+            slot_date = date.fromisoformat(date_str)  # Convert the date string to a `date` object
+        except ValueError:
+            return JsonResponse({"error": "Invalid date format. Please use ISO format (YYYY-MM-DD)."}, status=400)
+
+        # Parse start_time and end_time
+        try:
+            start_time = time.fromisoformat(start_time_str) if start_time_str else time(9, 0)
+            end_time = time.fromisoformat(end_time_str) if end_time_str else time(17, 0)
+        except ValueError:
+            return JsonResponse({"error": "Invalid time format. Please use ISO time format (HH:MM)."}, status=400)
 
 
-    # Fetch the doctor/staff details
-    doctor = Staff_Allotment.objects.get(staff_id=staff_id)
-    # print("1")
-    # Check if the doctor has a leave during the requested date and time range
-    leave_exists = Leave_Management.objects.filter(
-        Q(start_time__lte=end_time) & Q(end_time__gte=start_time),
-        staff_id=doctor,
-        date=slot_date,
-         ).exists()
-    
-    # print("2")
-    # doctor=Staff_MetaData.objects.get(staff_id=staff_id)
-    # Query the slots for the given date
-    queryset = Slot.objects.filter(doctor=staff_id, date=slot_date)
-    serializer = SlotSerializer(queryset, many=True)
-    data = serializer.data
-    # print("data :",data)
-    doctor = Staff_Allotment.objects.get(staff_id=staff_id)
+        # Fetch the doctor/staff details
+        doctor = Staff_Allotment.objects.get(staff_id=staff_id)
+        # print("1")
+        # Check if the doctor has a leave during the requested date and time range
+        leave_exists = Leave_Management.objects.filter(
+            Q(start_time__lte=end_time) & Q(end_time__gte=start_time),
+            staff_id=doctor,
+            date=slot_date,
+            ).exists()
+        
+        # print("2")
+        # doctor=Staff_MetaData.objects.get(staff_id=staff_id)
+        # Query the slots for the given date
+        queryset = Slot.objects.filter(doctor=staff_id, date=slot_date)
+        serializer = SlotSerializer(queryset, many=True)
+        data = serializer.data
+        # print("data :",data)
+        doctor = Staff_Allotment.objects.get(staff_id=staff_id)
 
-    # print("3")
-    # If no slots exist, generate slots dynamically
-    if not serializer.data:
-        print("null serializer")
-        data = generate_time_slots(doctor, slot_date, start_time, end_time, slot_duration=15)
-    # print("slots : ",data)
+        # print("3")
+        # If no slots exist, generate slots dynamically
+        if not serializer.data:
+            print("null serializer")
+            data = generate_time_slots(doctor, slot_date, start_time, end_time, slot_duration=15)
+        # print("slots : ",data)
 
-    return JsonResponse({"message":"Slots created successfully", "status": "200"}, status=200)
+        return JsonResponse({"message":"Slots created successfully", "status": "200"}, status=200)
+    except Exception as e:
+        return JsonResponse({'message': str(e), 'status': '403'}, status=403) 
 
 
 
@@ -167,6 +171,7 @@ def get_available_slots(doctor, date):
         current_time += slot_duration
 
     return available_slots
+
 
 
 
