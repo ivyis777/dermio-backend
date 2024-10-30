@@ -242,12 +242,70 @@ class TopDoctorsListView(generics.ListCreateAPIView):
     serializer_class = TopDoctorsSerializer
 
 
+from rest_framework import generics, status
+from rest_framework.response import Response
+from django.core.exceptions import ObjectDoesNotExist, ValidationError
+
+
 class StaffMetaDataByDesignationView(generics.ListAPIView):
     serializer_class = StaffMetaDataSerializer
 
     def get_queryset(self):
-        designation = self.kwargs['profession']
-        return Staff_MetaData.objects.filter(profession=designation)
+        # Check if 'profession' exists in kwargs
+        designation = self.kwargs.get('profession')
+        if not designation:
+            raise ValidationError("Profession parameter is required.")
+        
+        # Retrieve and filter data, using select_related for optimization if foreign keys exist
+        queryset = Staff_MetaData.objects.filter(profession=designation).select_related()
+        
+        # Check if the queryset is empty and handle it
+        if not queryset.exists():
+            return queryset.none()  # Return an empty queryset for better API control
+        
+        return queryset
+
+    def list(self, request, *args, **kwargs):
+        try:
+            # Get queryset and check if any data is returned
+            queryset = self.get_queryset()
+            if not queryset.exists():
+                return Response(
+                    {"detail": "No staff data found for the given profession."},
+                    status=status.HTTP_404_NOT_FOUND
+                )
+            
+            # Serialize and return data if found
+            serializer = self.get_serializer(queryset, many=True)
+            return Response(serializer.data)
+        
+        # Handle specific exceptions
+        except ObjectDoesNotExist:
+            return Response(
+                {"error": "Invalid data. Profession does not match any records."},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+        except ValidationError as e:
+            return Response(
+                {"error": str(e)},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+        except Exception as e:
+            # Catch other unexpected exceptions
+            return Response(
+                {"error": "An unexpected error occurred. Please try again later."},
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR
+            )
+
+
+
+
+# class StaffMetaDataByDesignationView(generics.ListAPIView):
+#     serializer_class = StaffMetaDataSerializer
+
+#     def get_queryset(self):
+#         designation = self.kwargs['profession']
+#         return Staff_MetaData.objects.filter(profession=designation)
 
 
 def get_meta_data():
