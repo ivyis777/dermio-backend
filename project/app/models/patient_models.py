@@ -81,7 +81,7 @@ class Patient(models.Model):
     city = models.CharField(max_length=50,db_column='city', blank=True, null=True)
     country = models.CharField(max_length=50,db_column='country',blank=True, null=True)
     state=models.CharField(max_length=50,db_column='state',blank=True, null=True)
-    image = models.ImageField(upload_to='app.images/', null=True, blank=True)  # Add this line for the image field
+    image = models.ImageField(upload_to='patient_images/', null=True, blank=True)  # Add this line for the image field
     # is_creator=models.BooleanField(default=False)
 
     through_google=models.BooleanField(db_column="through_google", default=False)
