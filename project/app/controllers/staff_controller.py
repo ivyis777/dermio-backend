@@ -199,6 +199,10 @@ class AvailableSlotsView(APIView):
 class StaffMetaDataUpdateOrCreateView(APIView):
     def post(self, request, staff_meta_id=None):
         # Check if staff_meta_id is provided (for update)
+        data = request.POST.get('data', '{}')
+        print("data :",data)
+
+
         print(staff_meta_id)
         if staff_meta_id:
             try:
