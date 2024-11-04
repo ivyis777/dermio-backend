@@ -109,6 +109,6 @@ class Staff_MetaData(models.Model):
 class Top_doctors(models.Model):
     top_doctor_id=models.BigAutoField(primary_key=True)
     doctor_id=models.ForeignKey(Staff_Allotment,on_delete=models.CASCADE,to_field='staff_id',db_column='doctor_id')
-    department=models.ForeignKey(Doctor_Departments,on_delete=models.CASCADE,db_column='dept_name',to_field='dept_name')
+    department=models.ForeignKey(Doctor_Departments,on_delete=models.CASCADE,db_column='dept_name',to_field='dept_name',null=True)
     image = models.ImageField(upload_to='app.images/', null=True, blank=True)  # Add this line for the image field
     
