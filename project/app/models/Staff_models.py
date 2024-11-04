@@ -104,7 +104,7 @@ class Staff_MetaData(models.Model):
 
     class Meta:
         db_table="staff_MetaData"
-
+    
 
 class Top_doctors(models.Model):
     top_doctor_id=models.BigAutoField(primary_key=True)

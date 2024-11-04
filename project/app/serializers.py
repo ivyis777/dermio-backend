@@ -203,7 +203,7 @@ from app.models.Staff_models import Staff_Allotment
 
 
 class PatientUpdateSerializer(serializers.ModelSerializer):
-    
+        
     # image = serializers.SerializerMethodField()
 
     class Meta:
