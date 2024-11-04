@@ -202,6 +202,11 @@ class StaffMetaDataUpdateOrCreateView(APIView):
         data = request.POST.get('data', '{}')
         print("data :",data)
 
+        try:
+            data = json.loads(data)
+        except json.JSONDecodeError:
+            return JsonResponse({'error': 'Invalid JSON format',"status": "400"}, status=400)
+
 
         print(staff_meta_id)
         if staff_meta_id:
