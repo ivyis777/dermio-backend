@@ -322,6 +322,7 @@ def get_profile_page(request):
         return JsonResponse({"error": "Unauthorized access"}, status=401)
 
     patient = request.user
+    print("patient :",patient)
 
     try:
         user = Patient.objects.get(id=patient.id)
