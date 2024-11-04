@@ -215,7 +215,7 @@ class StaffMetaDataUpdateOrCreateView(APIView):
             staff_meta = None
 
         # Use the serializer to validate and save data (create if not found)
-        serializer = StaffMetaDataSerializer(staff_meta, data=request.data, partial=True)
+        serializer = StaffMetaDataSerializer(staff_meta, data=data, partial=True)
         if serializer.is_valid():
             serializer.save()
             if staff_meta:
