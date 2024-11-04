@@ -69,6 +69,7 @@ class Patient(models.Model):
     gender = models.CharField(db_column='gender', max_length=50, blank=True, null=True)  # Field name made lowercase.
     address = models.CharField(db_column='Address', max_length=50, blank=True, null=True)  # Field name made lowercase.
     age=models.IntegerField(db_column="age",blank=True,null=True)
+    dob=models.DateField(db_column="age",blank=True,null=True)
 
 
     mobile = models.CharField(unique=True, max_length=15, blank=True, null=True)
