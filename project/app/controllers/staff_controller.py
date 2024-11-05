@@ -31,6 +31,19 @@ from datetime import time, date
 from datetime import datetime, timedelta
 from django.db.models import Q
 
+
+
+# View for retrieving all and creating new records
+class TopDoctorsListCreateAPIView(generics.ListCreateAPIView):
+    queryset = Top_doctors.objects.all()
+    serializer_class = TopDoctorsSerializer
+
+# View for retrieving, updating, and deleting a specific record
+class TopDoctorsDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Top_doctors.objects.all()
+    serializer_class = TopDoctorsSerializer
+    lookup_field = 'top_doctor_id'  # Field to match for operations
+
 def generate_time_slots(doctor, date, start_time, end_time, slot_duration=15):
     """
     Generate 15-minute interval time slots for a given date and time range.
@@ -246,9 +259,6 @@ class StaffMetaDataUpdateOrCreateView(APIView):
         })
 
 
-class TopDoctorsListView(generics.ListCreateAPIView):
-    queryset = Top_doctors.objects.all()
-    serializer_class = TopDoctorsSerializer
 
 
 from rest_framework import generics, status
