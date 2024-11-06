@@ -71,7 +71,8 @@ MIDDLEWARE = [
 SECRET_KEY = 'django-insecure-%azpy(5fq-z!(&ug@&*cpu@f@)w%u4xo11k=rl)t=x8av(c^mm'
 
 MEDIA_URL = '/user_images/'  # Public URL to access media files
-MEDIA_ROOT = r'E:\Dermio\project\app\images'  # Absolute path to store media
+MEDIA_ROOT = '/home/ubuntu/project/app/images'  # Adjust this to your server’s path
+
 
 
 
