@@ -243,7 +243,7 @@ def staff_meta_data_create_or_update(request, staff_meta_id=None):
 
         serializer = StaffMetaDataSerializer(staff_meta, data=data, partial=True)
 
-        print("staff_before",serializer.data)
+        print("staff_before",serializer)
         if serializer.is_valid():
             # Save the instance (image and other data)
             serializer.save()
