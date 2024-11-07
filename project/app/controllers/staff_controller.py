@@ -243,9 +243,12 @@ def staff_meta_data_create_or_update(request, staff_meta_id=None):
 
         serializer = StaffMetaDataSerializer(staff_meta, data=data, partial=True)
 
+        print("staff_before",staff_meta)
         if serializer.is_valid():
             # Save the instance (image and other data)
             serializer.save()
+            print("staff_after",staff_meta)
+
             return JsonResponse({
                 "status": 200 if staff_meta else 201,
                 "message": "Staff MetaData updated successfully" if staff_meta else "Staff MetaData created successfully",
