@@ -226,30 +226,38 @@ class StaffMetaDataUpdateOrCreateView(APIView):
         else:
             # No staff_meta_id passed, so we are creating a new record
             staff_meta = None
-from rest_framework.response import Response
-from rest_framework.decorators import api_view
-from django.http import JsonResponse
-# from .models import Staff_MetaData
-# from .serializers import StaffMetaDataSerializer
-import json
+
 
 @api_view(['POST'])
 def staff_meta_data_create_or_update(request, staff_meta_id=None):
     if request.method == 'POST':
-        # Get the data directly from the form data
-        data = request.data  # Automatically parses multipart form-data into a QueryDict
-        
-        print("Received data:", data)
+        # Extract the 'data' field, which is a JSON string
+        data = request.data.get('data')
 
+        if not data:
+            return JsonResponse({"error": "No data field in request", "status": 400}, status=400)
+
+        # Parse the JSON data
+        try:
+            data = json.loads(data)
+        except json.JSONDecodeError:
+            return JsonResponse({"error": "Invalid JSON format in data", "status": 400}, status=400)
+
+        # Handle existing staff_meta_id or create a new one if not provided
         if staff_meta_id:
             try:
-                # Fetch the existing staff metadata by its id
                 staff_meta = Staff_MetaData.objects.get(staff_meta_id=staff_meta_id)
             except Staff_MetaData.DoesNotExist:
                 return JsonResponse({"error": "Staff MetaData not found", "status": 404}, status=404)
         else:
-            # If no staff_meta_id, create a new staff_meta entry
-            staff_meta = None
+            staff_meta = None  # Create new entry if no ID is passed
+
+        # Add the image field from the request (this will already be handled by DRF automatically)
+        image = request.FILES.get('image')  # Get the image file if it's uploaded
+
+        # Include image in the data dictionary if it's available
+        if image:
+            data['image'] = image
 
         # Serialize the data (validate and save)
         serializer = StaffMetaDataSerializer(staff_meta, data=data, partial=True)
@@ -257,7 +265,6 @@ def staff_meta_data_create_or_update(request, staff_meta_id=None):
         if serializer.is_valid():
             # Save the instance (image and other data)
             serializer.save()
-            print("Updated staff:", serializer.data)
 
             return JsonResponse({
                 "status": 200 if staff_meta else 201,
@@ -266,6 +273,7 @@ def staff_meta_data_create_or_update(request, staff_meta_id=None):
             })
         else:
             return JsonResponse({"status": 400, "errors": serializer.errors}, status=400)
+
 
 
 
