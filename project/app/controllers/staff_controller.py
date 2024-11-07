@@ -136,24 +136,20 @@ def check_availability(request):
 
 @api_view(['GET'])
 def get_staff_by_department(request):
-    print("dept ",request.query_params.get('department', None))
-    departments = request.query_params.get('department', None)  # Get department from query params
 
-    print("department : ",departments,type(departments))
-    print(departments,"Cardiology",departments=="Cardiology")
+    try :
+        print("dept ",request.query_params.get('department', None))
+        departments = request.query_params.get('department', None)  # Get department from query params
 
-    if departments is None:
-        return Response({"error": "Department parameter is required","status":"400"}, status=400)
- 
-    # Filter staff by department
-    # staff_metadata = Staff_MetaData.objects.filter(department=departments)  # case-insensitive filter
-    # print(staff_metadata)
-    # if not staff_metadata.exists():
-    #     return Response({"message": "No staff found in the given department","status":"400"}, status=400)
+        print("department : ",departments,type(departments))
+        print(departments,"Cardiology",departments=="Cardiology")
 
-    # # Serialize the data
-    # serializer = StaffMetaDataSerializer(staff_metadata, many=True)
-    # return Response(serializer.data, status=status.HTTP_200_OK)
+        if departments is None:
+            return Response({"error": "Department parameter is required","status":"400"}, status=400)
+    except Exception as error:
+        return JsonResponse({'message': str(error), 'status': '403'}, status=403) 
+        
+
 
 
 
