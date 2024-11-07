@@ -236,31 +236,22 @@ import json
 @api_view(['POST'])
 def staff_meta_data_create_or_update(request, staff_meta_id=None):
     if request.method == 'POST':
-        # Extract data directly from request.data (it's already a dictionary, not a string)
-        data = request.data  # No need to do request.data.get('data') if data is a JSON object
+        # Get the data directly from the form data
+        data = request.data  # Automatically parses multipart form-data into a QueryDict
+        
+        print("Received data:", data)
 
-        if not data:
-            return JsonResponse({"error": "No data field in request", "status": 400}, status=400)
-
-        print("Received data:", data)  # Check what data looks like
-
-        # If you're passing the data as a string, you would need to parse it
-        # if isinstance(data, str):
-        #     try:
-        #         data = json.loads(data)
-        #     except json.JSONDecodeError:
-        #         return JsonResponse({'error': 'Invalid JSON format', "status": 400}, status=400)
-
-        # Handle staff_meta_id for either create or update
         if staff_meta_id:
             try:
+                # Fetch the existing staff metadata by its id
                 staff_meta = Staff_MetaData.objects.get(staff_meta_id=staff_meta_id)
             except Staff_MetaData.DoesNotExist:
                 return JsonResponse({"error": "Staff MetaData not found", "status": 404}, status=404)
         else:
-            staff_meta = None  # No staff_meta_id passed, we're creating a new record
+            # If no staff_meta_id, create a new staff_meta entry
+            staff_meta = None
 
-        # Pass the parsed data to the serializer for validation and saving
+        # Serialize the data (validate and save)
         serializer = StaffMetaDataSerializer(staff_meta, data=data, partial=True)
 
         if serializer.is_valid():
