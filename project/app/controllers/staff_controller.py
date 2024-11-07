@@ -204,6 +204,28 @@ class AvailableSlotsView(APIView):
 #         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 # @api_view(['POST'])
+class StaffMetaDataUpdateOrCreateView(APIView):
+    def post(self, request, staff_meta_id=None):
+        # Check if staff_meta_id is provided (for update)
+        data = request.POST.get('data', '{}')
+        print("data :",data)
+
+        try:
+            data = json.loads(data)
+        except json.JSONDecodeError:
+            return JsonResponse({'error': 'Invalid JSON format',"status": "400"}, status=400)
+
+
+        print(staff_meta_id)
+        if staff_meta_id:
+            try:
+                staff_meta = Staff_MetaData.objects.get(staff_meta_id=staff_meta_id)
+            except Staff_MetaData.DoesNotExist:
+                # If not found, proceed with creating a new entry
+                staff_meta = None
+        else:
+            # No staff_meta_id passed, so we are creating a new record
+            staff_meta = None
 
 @api_view(['POST'])
 def staff_meta_data_create_or_update(request, staff_meta_id=None):
