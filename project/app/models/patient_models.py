@@ -65,7 +65,7 @@ def patient_image_path(instance, filename):
     extension = filename.split('.')[-1]  # Extract the original file extension
 
     # Filename based solely on UUID and file extension
-    new_filename = f"{unique_id}.{extension}"
+    new_filename = f"{instance.id}_{unique_id}.{extension}"
     return os.path.join("patients", new_filename)
 
 
