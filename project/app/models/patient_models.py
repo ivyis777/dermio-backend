@@ -55,6 +55,18 @@ class Patient_Symptoms(models.Model):
     is_active = models.BooleanField(default=True)
     
 
+import os
+import uuid
+from django.db import models
+
+def patient_image_path(instance, filename):
+    # Generate a unique filename using UUID only
+    unique_id = uuid.uuid4()
+    extension = filename.split('.')[-1]  # Extract the original file extension
+
+    # Filename based solely on UUID and file extension
+    new_filename = f"{unique_id}.{extension}"
+    return os.path.join("patients", new_filename)
 
 
 class Patient(models.Model):
@@ -81,7 +93,7 @@ class Patient(models.Model):
     city = models.CharField(max_length=50,db_column='city', blank=True, null=True)
     country = models.CharField(max_length=50,db_column='country',blank=True, null=True)
     state=models.CharField(max_length=50,db_column='state',blank=True, null=True)
-    image = models.ImageField(upload_to='patient_images/', null=True, blank=True)  # Add this line for the image field
+    image = models.ImageField(upload_to=patient_image_path, null=True, blank=True)  # Add this line for the image field
     # is_creator=models.BooleanField(default=False)
 
     through_google=models.BooleanField(db_column="through_google", default=False)

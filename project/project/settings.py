@@ -14,7 +14,7 @@ import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+# BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # Quick-start development settings - unsuitable for production
@@ -70,13 +70,18 @@ MIDDLEWARE = [
 
 SECRET_KEY = 'django-insecure-%azpy(5fq-z!(&ug@&*cpu@f@)w%u4xo11k=rl)t=x8av(c^mm'
 
-MEDIA_URL = '/user_images/'  # Public URL to access media files
-# MEDIA_ROOT = '/home/ubuntu/project/app/images'  # Adjust this to your server’s path
+# MEDIA_URL = '/user_images/'  # Public URL to access media files
+# # MEDIA_ROOT = '/home/ubuntu/project/app/images'  # Adjust this to your server’s path
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  
 
-# Directory for your custom user images (on AWS server)
-IMAGE_ROOT = '/home/ubuntu/project/app/images'
+import os
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 
 
