@@ -205,54 +205,31 @@ class AvailableSlotsView(APIView):
 
 # @api_view(['POST'])
 
-class StaffMetaDataUpdateOrCreateView(APIView):
-    def post(self, request, staff_meta_id=None):
-        # Check if staff_meta_id is provided (for update)
-        data = request.POST.get('data', '{}')
-        print("data :",data)
+@api_view(['POST'])
+def staff_meta_data_create_or_update(request, staff_meta_id=None):
+    if request.method == 'POST':
+        data = request.data  # Using `request.data` instead of `request.POST`
 
-        try:
-            data = json.loads(data)
-        except json.JSONDecodeError:
-            return JsonResponse({'error': 'Invalid JSON format',"status": "400"}, status=400)
-
-
-        print(staff_meta_id)
         if staff_meta_id:
             try:
-                staff_meta = Staff_MetaData.objects.get(staff_meta_id=staff_meta_id)
+                staff_meta = Staff_MetaData.objects.get(id=staff_meta_id)
             except Staff_MetaData.DoesNotExist:
-                # If not found, proceed with creating a new entry
-                staff_meta = None
+                return JsonResponse({"error": "Staff MetaData not found", "status": 404}, status=404)
         else:
-            # No staff_meta_id passed, so we are creating a new record
-            staff_meta = None
+            staff_meta = None  # Creating a new entry if no `staff_meta_id`
 
-        # Use the serializer to validate and save data (create if not found)
         serializer = StaffMetaDataSerializer(staff_meta, data=data, partial=True)
-        if serializer.is_valid():
-            serializer.save()
-            if staff_meta:
-                # Return an update response
-                return Response({
-                    "status": 200,
-                    "message": "Staff MetaData updated successfully",
-                    "data": serializer.data
-                })
-            else:
-                # Return a creation response
-                return Response({
-                    "status": 201,
-                    "message": "Staff MetaData created successfully",
-                    "data": serializer.data
-                })
 
-        # Return validation errors
-        return Response({
-            "status": 400,
-            "message": "Invalid data",
-            "errors": serializer.errors
-        })
+        if serializer.is_valid():
+            # Save the instance (image and other data)
+            serializer.save()
+            return JsonResponse({
+                "status": 200 if staff_meta else 201,
+                "message": "Staff MetaData updated successfully" if staff_meta else "Staff MetaData created successfully",
+                "data": serializer.data
+            })
+        else:
+            return JsonResponse({"status": 400, "errors": serializer.errors}, status=400)
 
 
 

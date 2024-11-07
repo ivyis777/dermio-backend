@@ -84,15 +84,15 @@ from django.conf import settings
 
 
 def staff_image_path(instance, filename):
-    # Generate a unique filename to prevent conflicts
+    # Generate a unique filename using uuid
     unique_id = uuid.uuid4()  # For unique filenames
     extension = filename.split('.')[-1]  # Extract file extension
     new_filename = f"{unique_id}.{extension}"
 
-    # Define the path for saving images in 'staff_meta' folder
+    # Define the path for saving images in the 'staff_meta' folder within MEDIA_ROOT
     path = os.path.join('staff_meta', new_filename)
 
-    # Ensure the directory exists
+    # Ensure the folder exists in MEDIA_ROOT
     media_root = os.path.join(settings.MEDIA_ROOT, 'staff_meta')
     if not os.path.exists(media_root):
         os.makedirs(media_root)
