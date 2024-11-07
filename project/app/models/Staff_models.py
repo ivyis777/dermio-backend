@@ -80,16 +80,23 @@ class Slot(models.Model):
 
 import os
 import uuid
+import settings
 
 def staff_image_path(instance, filename):
-    # Save images in 'staff_meta' folder with the original filename (or UUID for uniqueness)
-    # If you want unique filenames, you can add a UUID to prevent overwriting
+    # Generate a unique filename to prevent conflicts
     unique_id = uuid.uuid4()  # For unique filenames
     extension = filename.split('.')[-1]  # Extract file extension
     new_filename = f"{unique_id}.{extension}"
-    
-    # Save to 'staff_meta' folder
-    return os.path.join('staff_meta', new_filename)
+
+    # Define the path for saving images in 'staff_meta' folder
+    path = os.path.join('staff_meta', new_filename)
+
+    # Ensure the directory exists
+    media_root = os.path.join(settings.MEDIA_ROOT, 'staff_meta')
+    if not os.path.exists(media_root):
+        os.makedirs(media_root)
+
+    return path
 
 class Staff_MetaData(models.Model):
     staff_meta_id = models.BigAutoField(primary_key=True,unique=True)
