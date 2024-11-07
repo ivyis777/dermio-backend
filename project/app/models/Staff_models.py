@@ -78,6 +78,19 @@ class Slot(models.Model):
     class Meta:
         db_table="slots"
 
+import os
+import uuid
+
+def staff_image_path(instance, filename):
+    # Save images in 'staff_meta' folder with the original filename (or UUID for uniqueness)
+    # If you want unique filenames, you can add a UUID to prevent overwriting
+    unique_id = uuid.uuid4()  # For unique filenames
+    extension = filename.split('.')[-1]  # Extract file extension
+    new_filename = f"{unique_id}.{extension}"
+    
+    # Save to 'staff_meta' folder
+    return os.path.join('staff_meta', new_filename)
+
 class Staff_MetaData(models.Model):
     staff_meta_id = models.BigAutoField(primary_key=True,unique=True)
     staff_id=models.ForeignKey(Staff_Allotment,on_delete=models.CASCADE,to_field='staff_id',db_column='staff_id')
@@ -92,7 +105,7 @@ class Staff_MetaData(models.Model):
     designation = models.CharField(max_length=100, null=True, blank=True)
     profession = models.CharField(max_length=30, null=True, blank=True)
     department=models.CharField(max_length=30, null=True, blank=True)
-    image = models.ImageField(upload_to='staff_images/', null=True, blank=True)  # Add this line for the image field
+    image = models.ImageField(upload_to=staff_image_path, null=True, blank=True)  # Add this line for the image field
     slot_duration = models.IntegerField(default=30)  # Slot duration in minutes
     description=models.TextField(null=True, blank=True)
     experience=models.CharField(max_length=20, null=True, blank=True)
