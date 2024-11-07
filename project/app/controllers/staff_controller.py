@@ -234,7 +234,7 @@ def staff_meta_data_create_or_update(request, staff_meta_id=None):
 
         if staff_meta_id:
             try:
-                staff_meta = Staff_MetaData.objects.get(id=staff_meta_id)
+                staff_meta = Staff_MetaData.objects.get(staff_meta_id=staff_meta_id)
             except Staff_MetaData.DoesNotExist:
                 return JsonResponse({"error": "Staff MetaData not found", "status": 404}, status=404)
         else:
