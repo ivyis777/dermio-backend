@@ -231,6 +231,7 @@ class StaffMetaDataUpdateOrCreateView(APIView):
 def staff_meta_data_create_or_update(request, staff_meta_id=None):
     if request.method == 'POST':
         data = request.data  # Using `request.data` instead of `request.POST`
+        print("data :", data)
 
         if staff_meta_id:
             try:
