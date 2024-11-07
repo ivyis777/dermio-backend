@@ -80,7 +80,8 @@ class Slot(models.Model):
 
 import os
 import uuid
-import settings
+from django.conf import settings
+
 
 def staff_image_path(instance, filename):
     # Generate a unique filename to prevent conflicts
