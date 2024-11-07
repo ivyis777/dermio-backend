@@ -230,8 +230,12 @@ class StaffMetaDataUpdateOrCreateView(APIView):
 @api_view(['POST'])
 def staff_meta_data_create_or_update(request, staff_meta_id=None):
     if request.method == 'POST':
-        data = request.data  # Using `request.data` instead of `request.POST`
-        print("data :", data)
+        data = request.data.get('data')  # Get the 'data' field from the request
+
+        if not data:
+            return JsonResponse({"error": "No data field in request", "status": 400}, status=400)
+        
+        print("Received data:", data)
 
         if staff_meta_id:
             try:
