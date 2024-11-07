@@ -71,8 +71,12 @@ MIDDLEWARE = [
 SECRET_KEY = 'django-insecure-%azpy(5fq-z!(&ug@&*cpu@f@)w%u4xo11k=rl)t=x8av(c^mm'
 
 MEDIA_URL = '/user_images/'  # Public URL to access media files
-MEDIA_ROOT = '/home/ubuntu/project/app/images'  # Adjust this to your server’s path
+# MEDIA_ROOT = '/home/ubuntu/project/app/images'  # Adjust this to your server’s path
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  
+
+# Directory for your custom user images (on AWS server)
+IMAGE_ROOT = '/home/ubuntu/project/app/images'
 
 
 

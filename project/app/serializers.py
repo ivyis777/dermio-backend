@@ -210,19 +210,19 @@ class PatientUpdateSerializer(serializers.ModelSerializer):
         model = Patient
         fields = ['id', 'name', 'gender', 'email', 'mobile', 'address', 'city', 'country', 'state', 'pincode', 'image','age',"username","dob"]
         
-        # def get_image(self, user):
-        #     if user.image:
-        #         path=user.image
-        #         path1=user.image.url
-        #         print(path1)
-        #         converted_string = path1.replace("/app.images/", "/user_images/")
-        #         print(converted_string)
+        def get_image(self, user):
+            if user.image:
+                path=user.image
+                path1=user.image.url
+                print(path1)
+                converted_string = path1.replace("/app.images/", "/user_images/")
+                print(converted_string)
                 
                 
                 
-            #     print("iam in image function",user.image.url,path1,type(path1))
-            #     return converted_string
-            # return None
+                print("iam in image function",user.image.url,path1,type(path1))
+                return converted_string
+            return None
 # from app.models
 # from app.models
 
