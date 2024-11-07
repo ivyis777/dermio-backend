@@ -94,6 +94,8 @@ class Staff_MetaData(models.Model):
     department=models.CharField(max_length=30, null=True, blank=True)
     image = models.ImageField(upload_to='staff_images/', null=True, blank=True)  # Add this line for the image field
     slot_duration = models.IntegerField(default=30)  # Slot duration in minutes
+    description=models.TextField(null=True, blank=True)
+    experience=models.CharField(max_length=20, null=True, blank=True)
     # start_time = models.TimeField()  # e.g., 9:00 AM
     # end_time = models.TimeField()
     Fullname_IMC=models.CharField(max_length=300,null=True)
