@@ -101,7 +101,7 @@ def check_availability(request):
             return JsonResponse({"error": "Invalid date format. Please use ISO format (YYYY-MM-DD)."}, status=400)
         
         if not Staff_Allotment.objects.filter(staff_id=staff_id).exists():
-            return JsonResponse({"error": "Invalid staff ID. Doctor/staff not found."}, status=404)
+            return JsonResponse({"error": "Invalid staff ID. Doctor/staff not found.","status": "404"}, status=404)
 
         # Fetch the doctor/staff details
         doctor = Staff_Allotment.objects.get(staff_id=staff_id)
