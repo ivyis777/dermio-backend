@@ -47,6 +47,7 @@ def top_doctors_crud(request, top_doctor_id=None):
         # Retrieve department and image from Staff_MetaData
         try:
             staff_meta = Staff_MetaData.objects.get(staff_id=doctor_id)
+            print(staff_meta)
             department_name = staff_meta.department
             image = staff_meta.image
         except Staff_MetaData.DoesNotExist:
