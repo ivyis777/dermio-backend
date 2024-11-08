@@ -319,9 +319,15 @@ class StaffMetaDataUpdateOrCreateView(APIView):
             staff_meta = None
 
 
-@api_view(['POST'])
+
+
+@api_view(['POST', 'GET'])
 def staff_meta_data_create_or_update(request, staff_meta_id=None):
     if request.method == 'POST':
+        # Ensure that a staff_meta_id is provided, as we are only allowing updates
+        if not staff_meta_id:
+            return JsonResponse({"error": "staff_meta_id is required for updates", "status": 400}, status=400)
+
         # Extract the 'data' field, which is a JSON string
         data = request.data.get('data')
 
@@ -334,14 +340,11 @@ def staff_meta_data_create_or_update(request, staff_meta_id=None):
         except json.JSONDecodeError:
             return JsonResponse({"error": "Invalid JSON format in data", "status": 400}, status=400)
 
-        # Handle existing staff_meta_id or create a new one if not provided
-        if staff_meta_id:
-            try:
-                staff_meta = Staff_MetaData.objects.get(staff_meta_id=staff_meta_id)
-            except Staff_MetaData.DoesNotExist:
-                return JsonResponse({"error": "Staff MetaData not found", "status": 404}, status=404)
-        else:
-            staff_meta = None  # Create new entry if no ID is passed
+        # Retrieve the existing Staff_MetaData instance to update
+        try:
+            staff_meta = Staff_MetaData.objects.get(staff_meta_id=staff_meta_id)
+        except Staff_MetaData.DoesNotExist:
+            return JsonResponse({"error": "Staff MetaData not found", "status": 404}, status=404)
 
         # Add the image field from the request (this will already be handled by DRF automatically)
         image = request.FILES.get('image')  # Get the image file if it's uploaded
@@ -358,12 +361,75 @@ def staff_meta_data_create_or_update(request, staff_meta_id=None):
             serializer.save()
 
             return JsonResponse({
-                "status": 200 if staff_meta else 201,
-                "message": "Staff MetaData updated successfully" if staff_meta else "Staff MetaData created successfully",
+                "status": 200,
+                "message": "Staff MetaData updated successfully",
                 "data": serializer.data
             })
         else:
             return JsonResponse({"status": 400, "errors": serializer.errors}, status=400)
+
+    elif request.method == 'GET':
+        # If a specific staff_meta_id is provided, retrieve that instance
+        if staff_meta_id:
+            try:
+                staff_meta = Staff_MetaData.objects.get(staff_meta_id=staff_meta_id)
+                serializer = StaffMetaDataSerializer(staff_meta)
+                return JsonResponse({"status": 200, "data": serializer.data})
+            except Staff_MetaData.DoesNotExist:
+                return JsonResponse({"error": "Staff MetaData not found", "status": 404}, status=404)
+        
+        # If no staff_meta_id is provided, retrieve all instances
+        staff_meta_data = Staff_MetaData.objects.all()
+        serializer = StaffMetaDataSerializer(staff_meta_data, many=True)
+        return JsonResponse({"status": 200, "data": serializer.data}, safe=False)
+
+
+
+# @api_view(['POST'])
+# def staff_meta_data_create_or_update(request, staff_meta_id=None):
+#     if request.method == 'POST':
+#         # Extract the 'data' field, which is a JSON string
+#         data = request.data.get('data')
+
+#         if not data:
+#             return JsonResponse({"error": "No data field in request", "status": 400}, status=400)
+
+#         # Parse the JSON data
+#         try:
+#             data = json.loads(data)
+#         except json.JSONDecodeError:
+#             return JsonResponse({"error": "Invalid JSON format in data", "status": 400}, status=400)
+
+#         # Handle existing staff_meta_id or create a new one if not provided
+#         if staff_meta_id:
+#             try:
+#                 staff_meta = Staff_MetaData.objects.get(staff_meta_id=staff_meta_id)
+#             except Staff_MetaData.DoesNotExist:
+#                 return JsonResponse({"error": "Staff MetaData not found", "status": 404}, status=404)
+#         else:
+#             staff_meta = None  # Create new entry if no ID is passed
+
+#         # Add the image field from the request (this will already be handled by DRF automatically)
+#         image = request.FILES.get('image')  # Get the image file if it's uploaded
+
+#         # Include image in the data dictionary if it's available
+#         if image:
+#             data['image'] = image
+
+#         # Serialize the data (validate and save)
+#         serializer = StaffMetaDataSerializer(staff_meta, data=data, partial=True)
+
+#         if serializer.is_valid():
+#             # Save the instance (image and other data)
+#             serializer.save()
+
+#             return JsonResponse({
+#                 "status": 200 if staff_meta else 201,
+#                 "message": "Staff MetaData updated successfully" if staff_meta else "Staff MetaData created successfully",
+#                 "data": serializer.data
+#             })
+#         else:
+#             return JsonResponse({"status": 400, "errors": serializer.errors}, status=400)
 
 
 
