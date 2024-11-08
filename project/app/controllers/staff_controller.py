@@ -126,7 +126,7 @@ def check_availability(request):
             data = generate_time_slots(doctor, slot_date, start_time, end_time, slot_duration=15)
         # print("slots : ",data)
 
-        return JsonResponse({"message":"Slots created successfully", "status": "200"}, status=200)
+        return JsonResponse({"message":"Slots created successfully","slots":data, "status": "200"}, status=200)
     except Exception as e:
         return JsonResponse({'message': str(e), 'status': '403'}, status=403) 
 
