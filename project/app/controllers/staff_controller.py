@@ -44,94 +44,179 @@ class TopDoctorsDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = TopDoctorsSerializer
     lookup_field = 'top_doctor_id'  # Field to match for operations
 
-def generate_time_slots(doctor, date, start_time, end_time, slot_duration=15):
+
+from datetime import datetime, timedelta, time, date
+import json
+from django.http import JsonResponse
+from rest_framework.decorators import api_view
+# from .models import Slot, Staff_Allotment, Staff_MetaData, Leave_Management
+# from .serializers import SlotSerializer
+from django.db.models import Q
+
+def generate_time_slots(doctor, date, slot_durations, slot_duration=15):
     """
-    Generate 15-minute interval time slots for a given date and time range.
+    Generate time slots based on specified intervals for a given date and slot duration.
     """
     slots = []
-    current_time = start_time
-    print("current time : ",current_time)
 
-    while current_time < end_time:
-        next_time = (datetime.combine(date, current_time) + timedelta(minutes=slot_duration)).time()
-        if next_time > end_time:  # Ensure we don't go beyond the doctor's end time
-            break
+    for interval in slot_durations:
+        start_hour, end_hour = interval  # Extract start and end hours
+        current_time = time(start_hour, 0)  # Set the starting time in hours
+        end_time = time(end_hour, 0)  # Set the ending time in hours
 
-        # Create and save a new TimeSlot for each interval
-        slot = Slot.objects.create(
-            doctor=doctor,
-            date=date,
-            start_time=current_time,
-            end_time=next_time,
-            is_available=True,
-            on_leave=False    # Initially, the slot is not booked
-        )
-        slots.append(slot)
-        current_time = next_time
+        while current_time < end_time:
+            next_time = (datetime.combine(date, current_time) + timedelta(minutes=slot_duration)).time()
+            if next_time > end_time:  # Ensure we don't go beyond the interval's end time
+                break
+
+            # Create and save a new Slot for each interval
+            slot = Slot.objects.create(
+                doctor=doctor,
+                date=date,
+                start_time=current_time,
+                end_time=next_time,
+                is_available=True,
+                on_leave=False
+            )
+            slots.append(slot)
+            current_time = next_time
     
-    # print("slots : ",slots)
+    # Serialize the list of Slot objects using the SlotSerializer
     serialized_slots = SlotSerializer(slots, many=True)
-    return serialized_slots.data
+    return serialized_slots.data  # Returns a list of dictionaries (JSON serializable)
 
 
 @api_view(['POST'])
 def check_availability(request):
-
-    # print("Entered check availability API")
-    
     try:
         # Parse the request data
         data = json.loads(request.body)
         staff_id = data.get('staff_id')
-        date_str = data.get("date")  # Expecting a date in ISO format like "2024-12-30"
-        start_time_str = data.get("start_time")  # This should be a string like "09:00"
-        end_time_str = data.get("end_time")  # This should be a string like "17:00"
-        print("data :",data)
+        date_str = data.get("date")
+
         # Convert date string to a date object
         try:
-            slot_date = date.fromisoformat(date_str)  # Convert the date string to a `date` object
+            slot_date = date.fromisoformat(date_str)
         except ValueError:
             return JsonResponse({"error": "Invalid date format. Please use ISO format (YYYY-MM-DD)."}, status=400)
 
-        # Parse start_time and end_time
-        try:
-            start_time = time.fromisoformat(start_time_str) if start_time_str else time(9, 0)
-            end_time = time.fromisoformat(end_time_str) if end_time_str else time(17, 0)
-        except ValueError:
-            return JsonResponse({"error": "Invalid time format. Please use ISO time format (HH:MM)."}, status=400)
-
-
         # Fetch the doctor/staff details
         doctor = Staff_Allotment.objects.get(staff_id=staff_id)
-        # print("1")
+
+        # Retrieve slot durations from Staff_MetaData
+        staff_metadata = Staff_MetaData.objects.get(staff_id=doctor)
+        slot_durations = staff_metadata.slot_durations  # Expected format: [[9, 12], [14, 16]]
+        slot_duration = staff_metadata.slot_duration  # Default slot duration in minutes
+
         # Check if the doctor has a leave during the requested date and time range
         leave_exists = Leave_Management.objects.filter(
-            Q(start_time__lte=end_time) & Q(end_time__gte=start_time),
             staff_id=doctor,
             date=slot_date,
-            ).exists()
-        
-        # print("2")
-        # doctor=Staff_MetaData.objects.get(staff_id=staff_id)
-        # Query the slots for the given date
+        ).exists()
+
+        # Query existing slots for the given date
         queryset = Slot.objects.filter(doctor=staff_id, date=slot_date)
         serializer = SlotSerializer(queryset, many=True)
         data = serializer.data
-        # print("data :",data)
-        doctor = Staff_Allotment.objects.get(staff_id=staff_id)
 
-        # print("3")
-        # If no slots exist, generate slots dynamically
-        if not serializer.data:
-            print("null serializer")
-            data = generate_time_slots(doctor, slot_date, start_time, end_time, slot_duration=15)
-            # data = json.loads(data)
+        # If no slots exist, generate slots dynamically based on `slot_durations`
+        if not data:
+            data = generate_time_slots(doctor, slot_date, slot_durations, slot_duration)
 
-        # print("slots : ",data)
-
-        return JsonResponse({"message":"Slots created successfully","slots":data, "status": "200"}, status=200)
+        return JsonResponse({"message": "Slots created successfully", "slots": data, "status": "200"}, status=200)
+    
     except Exception as e:
-        return JsonResponse({'message': str(e), 'status': '403'}, status=403) 
+        return JsonResponse({'message': str(e), 'status': '403'}, status=403)
+
+
+# def generate_time_slots(doctor, date, start_time, end_time, slot_duration=15):
+#     """
+#     Generate 15-minute interval time slots for a given date and time range.
+#     """
+#     slots = []
+#     current_time = start_time
+#     print("current time : ",current_time)
+
+#     while current_time < end_time:
+#         next_time = (datetime.combine(date, current_time) + timedelta(minutes=slot_duration)).time()
+#         if next_time > end_time:  # Ensure we don't go beyond the doctor's end time
+#             break
+
+#         # Create and save a new TimeSlot for each interval
+#         slot = Slot.objects.create(
+#             doctor=doctor,
+#             date=date,
+#             start_time=current_time,
+#             end_time=next_time,
+#             is_available=True,
+#             on_leave=False    # Initially, the slot is not booked
+#         )
+#         slots.append(slot)
+#         current_time = next_time
+    
+#     # print("slots : ",slots)
+#     serialized_slots = SlotSerializer(slots, many=True)
+#     return serialized_slots.data
+
+
+# @api_view(['POST'])
+# def check_availability(request):
+
+#     # print("Entered check availability API")
+    
+#     try:
+#         # Parse the request data
+#         data = json.loads(request.body)
+#         staff_id = data.get('staff_id')
+#         date_str = data.get("date")  # Expecting a date in ISO format like "2024-12-30"
+#         start_time_str = data.get("start_time")  # This should be a string like "09:00"
+#         end_time_str = data.get("end_time")  # This should be a string like "17:00"
+#         print("data :",data)
+#         # Convert date string to a date object
+#         try:
+#             slot_date = date.fromisoformat(date_str)  # Convert the date string to a `date` object
+#         except ValueError:
+#             return JsonResponse({"error": "Invalid date format. Please use ISO format (YYYY-MM-DD)."}, status=400)
+
+#         # Parse start_time and end_time
+#         try:
+#             start_time = time.fromisoformat(start_time_str) if start_time_str else time(9, 0)
+#             end_time = time.fromisoformat(end_time_str) if end_time_str else time(17, 0)
+#         except ValueError:
+#             return JsonResponse({"error": "Invalid time format. Please use ISO time format (HH:MM)."}, status=400)
+
+
+#         # Fetch the doctor/staff details
+#         doctor = Staff_Allotment.objects.get(staff_id=staff_id)
+#         # print("1")
+#         # Check if the doctor has a leave during the requested date and time range
+#         leave_exists = Leave_Management.objects.filter(
+#             Q(start_time__lte=end_time) & Q(end_time__gte=start_time),
+#             staff_id=doctor,
+#             date=slot_date,
+#             ).exists()
+        
+#         # print("2")
+#         # doctor=Staff_MetaData.objects.get(staff_id=staff_id)
+#         # Query the slots for the given date
+#         queryset = Slot.objects.filter(doctor=staff_id, date=slot_date)
+#         serializer = SlotSerializer(queryset, many=True)
+#         data = serializer.data
+#         # print("data :",data)
+#         doctor = Staff_Allotment.objects.get(staff_id=staff_id)
+
+#         # print("3")
+#         # If no slots exist, generate slots dynamically
+#         if not serializer.data:
+#             print("null serializer")
+#             data = generate_time_slots(doctor, slot_date, start_time, end_time, slot_duration=15)
+#             # data = json.loads(data)
+
+#         # print("slots : ",data)
+
+#         return JsonResponse({"message":"Slots created successfully","slots":data, "status": "200"}, status=200)
+#     except Exception as e:
+#         return JsonResponse({'message': str(e), 'status': '403'}, status=403) 
 
 
 
