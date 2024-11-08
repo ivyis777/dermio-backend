@@ -50,6 +50,7 @@ def top_doctors_crud(request, top_doctor_id=None):
             print(staff_meta.department)
 
             department_id = staff_meta.department
+            print(type(department_id))
             department_object=Doctor_Departments.objects.get(dept_id=department_id)
             department_name=department_object
 
