@@ -70,6 +70,7 @@ def generate_time_slots(doctor, date, start_time, end_time, slot_duration=15):
         current_time = next_time
     
     # print("slots : ",slots)
+    slots = json.dumps(slots)
     return slots
 
 
