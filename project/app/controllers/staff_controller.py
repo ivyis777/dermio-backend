@@ -85,7 +85,7 @@ def check_availability(request):
         date_str = data.get("date")  # Expecting a date in ISO format like "2024-12-30"
         start_time_str = data.get("start_time")  # This should be a string like "09:00"
         end_time_str = data.get("end_time")  # This should be a string like "17:00"
-
+        print("data :",data)
         # Convert date string to a date object
         try:
             slot_date = date.fromisoformat(date_str)  # Convert the date string to a `date` object
