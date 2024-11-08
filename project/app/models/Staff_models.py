@@ -56,14 +56,6 @@ class slots_booked(models.Model):
     updated_by = models.CharField(max_length=40, unique=True,null=True)
     is_active = models.BooleanField(default=True)
     
-
-
-
-
-
-
-
-
 class Slot(models.Model):
     
     slot_id= models.BigAutoField(primary_key=True)
@@ -117,6 +109,8 @@ class Staff_MetaData(models.Model):
     slot_duration = models.IntegerField(default=30)  # Slot duration in minutes
     description=models.TextField(null=True, blank=True)
     experience=models.CharField(max_length=20, null=True, blank=True)
+    slot_durations=models.JSONField(null=True, blank=True)
+
     # start_time = models.TimeField()  # e.g., 9:00 AM
     # end_time = models.TimeField()
     Fullname_IMC=models.CharField(max_length=300,null=True)
