@@ -51,7 +51,7 @@ def top_doctors_crud(request, top_doctor_id=None):
 
             department_id = staff_meta.department
             department_object=Doctor_Departments.objects.get(dept_id=department_id)
-            department_name=department_object.dept_name
+            department_name=department_object
 
             image = staff_meta.image
         except Staff_MetaData.DoesNotExist:
