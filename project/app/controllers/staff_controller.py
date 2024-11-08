@@ -55,7 +55,7 @@ from django.db.models import Q
 
 def generate_time_slots(doctor, date, slot_durations, slot_duration=15):
     """
-    Generate time slots based on specified intervals for a given date and slot duration.
+    Generate time slot5s based on specified intervals for a given date and slot duration.
     """
     slots = []
 
@@ -99,6 +99,9 @@ def check_availability(request):
             slot_date = date.fromisoformat(date_str)
         except ValueError:
             return JsonResponse({"error": "Invalid date format. Please use ISO format (YYYY-MM-DD)."}, status=400)
+        
+        if not Staff_Allotment.objects.filter(staff_id=staff_id).exists():
+            return JsonResponse({"error": "Invalid staff ID. Doctor/staff not found."}, status=404)
 
         # Fetch the doctor/staff details
         doctor = Staff_Allotment.objects.get(staff_id=staff_id)
