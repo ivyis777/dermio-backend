@@ -124,6 +124,8 @@ def check_availability(request):
         if not serializer.data:
             print("null serializer")
             data = generate_time_slots(doctor, slot_date, start_time, end_time, slot_duration=15)
+            data = json.loads(data)
+
         # print("slots : ",data)
 
         return JsonResponse({"message":"Slots created successfully","slots":data, "status": "200"}, status=200)
