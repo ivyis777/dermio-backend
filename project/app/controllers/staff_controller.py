@@ -58,15 +58,15 @@ def top_doctors_crud(request, top_doctor_id=None):
             return JsonResponse({"error": "Staff MetaData not found for the given doctor_id", "status": 404}, status=404)
         
         # Retrieve the Doctor_Departments object using department_name
-        try:
-            department = Doctor_Departments.objects.get(dept_name=department_name)
-        except Doctor_Departments.DoesNotExist:
-            return JsonResponse({"error": "Department not found", "status": 404}, status=404)
+        # try:
+        #     department = Doctor_Departments.objects.get(dept_name=department_name)
+        # except Doctor_Departments.DoesNotExist:
+        #     return JsonResponse({"error": "Department not found", "status": 404}, status=404)
         
         # Create Top_doctors entry
         top_doctor_data = {
             "doctor_id": doctor_id,
-            "department": department.pk,  # Use the department's primary key
+            "department": department_name,  # Use the department's primary key
             "image": image
         }
         serializer = TopDoctorsSerializer(data=top_doctor_data)
