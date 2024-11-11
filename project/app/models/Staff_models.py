@@ -128,4 +128,5 @@ class Top_doctors(models.Model):
     doctor_id=models.ForeignKey(Staff_Allotment,on_delete=models.CASCADE,to_field='staff_id',db_column='doctor_id')
     department=models.CharField(db_column='dept_name',null=True,max_length=30)
     image = models.ImageField(upload_to='app.images/', null=True, blank=True)  # Add this line for the image field
+    rank=models.IntegerField(null=True)
     
