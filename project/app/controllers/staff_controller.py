@@ -39,6 +39,7 @@ def top_doctors_crud(request, top_doctor_id=None):
     # Create Operation
     if request.method == 'POST':
         doctor_id = request.data.get('doctor_id')
+        rank=request.data.get('rank')
         
         # Ensure doctor_id is provided
         if not doctor_id:
@@ -67,7 +68,8 @@ def top_doctors_crud(request, top_doctor_id=None):
         top_doctor_data = {
             "doctor_id": doctor_id,
             "department": department_name,  # Use the department's primary key
-            "image": image
+            "image": image,
+            "rank":rank
         }
         serializer = TopDoctorsSerializer(data=top_doctor_data)
         
