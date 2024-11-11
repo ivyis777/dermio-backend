@@ -36,89 +36,75 @@ from django.db.models import Q
 
 @api_view(['POST', 'GET', 'PUT', 'DELETE'])
 def top_doctors_crud(request, top_doctor_id=None):
-    # Create Operation
+    # Create a new Top Doctor entry
     if request.method == 'POST':
         doctor_id = request.data.get('doctor_id')
-        rank=request.data.get('rank')
-        
-        # Ensure doctor_id is provided
+        rank = request.data.get('rank')
+
         if not doctor_id:
             return JsonResponse({"error": "doctor_id is required for creation", "status": 400}, status=400)
-        
-        # Retrieve department and image from Staff_MetaData
-        try:
-            staff_meta = Staff_MetaData.objects.get(staff_id=doctor_id)
-            # print(staff_meta.department)
 
-           
-            department_name=staff_meta.speciality
-            print(department_name)
-
-            image = staff_meta.image
-        except Staff_MetaData.DoesNotExist:
+        # Get department and image from Staff_MetaData
+        staff_meta = Staff_MetaData.objects.filter(staff_id=doctor_id).first()
+        if not staff_meta:
             return JsonResponse({"error": "Staff MetaData not found for the given doctor_id", "status": 404}, status=404)
         
-        # Retrieve the Doctor_Departments object using department_name
-        # try:
-        #     department = Doctor_Departments.objects.get(dept_name=department_name)
-        # except Doctor_Departments.DoesNotExist:
-        #     return JsonResponse({"error": "Department not found", "status": 404}, status=404)
-        
-        # Create Top_doctors entry
+        department_name = staff_meta.speciality
+        image = staff_meta.image
+
+        # Create a TopDoctors entry
         top_doctor_data = {
             "doctor_id": doctor_id,
-            "department": department_name,  # Use the department's primary key
+            "department": department_name,
             "image": image,
-            "rank":rank
+            "rank": rank
         }
         serializer = TopDoctorsSerializer(data=top_doctor_data)
-        
+
         if serializer.is_valid():
             serializer.save()
             return JsonResponse({"status": 201, "message": "Top doctor created successfully", "data": serializer.data}, status=201)
         else:
             return JsonResponse({"status": 400, "errors": serializer.errors}, status=400)
     
-    # Retrieve a single Top_doctors entry
+    # Retrieve a single TopDoctors entry
     elif request.method == 'GET' and top_doctor_id:
-        try:
-            top_doctor = Top_doctors.objects.get(top_doctor_id=top_doctor_id)
+        top_doctor = Top_doctors.objects.filter(top_doctor_id=top_doctor_id).first()
+        if top_doctor:
             serializer = TopDoctorsSerializer(top_doctor)
             return JsonResponse({"status": 200, "data": serializer.data})
-        except Top_doctors.DoesNotExist:
-            return JsonResponse({"error": "Top doctor not found", "status": 404}, status=404)
+        return JsonResponse({"error": "Top doctor not found", "status": 404}, status=404)
     
-    # Retrieve all Top_doctors entries
+    # Retrieve all TopDoctors entries
     elif request.method == 'GET':
         top_doctors = Top_doctors.objects.all()
         serializer = TopDoctorsSerializer(top_doctors, many=True)
         return JsonResponse({"status": 200, "data": serializer.data}, safe=False)
 
-    # Update an existing Top_doctors entry
+    # Update an existing TopDoctors entry
     elif request.method == 'PUT' and top_doctor_id:
-        try:
-            top_doctor = Top_doctors.objects.get(top_doctor_id=top_doctor_id)
-        except Top_doctors.DoesNotExist:
+        top_doctor = Top_doctors.objects.filter(top_doctor_id=top_doctor_id).first()
+        if not top_doctor:
             return JsonResponse({"error": "Top doctor not found", "status": 404}, status=404)
-        
+
         serializer = TopDoctorsSerializer(top_doctor, data=request.data, partial=True)
-        
         if serializer.is_valid():
             serializer.save()
             return JsonResponse({"status": 200, "message": "Top doctor updated successfully", "data": serializer.data})
-        else:
-            return JsonResponse({"status": 400, "errors": serializer.errors}, status=400)
+        return JsonResponse({"status": 400, "errors": serializer.errors}, status=400)
 
-    # Delete an existing Top_doctors entry
+    # Delete an existing TopDoctors entry
     elif request.method == 'DELETE' and top_doctor_id:
-        try:
-            top_doctor = Top_doctors.objects.get(top_doctor_id=top_doctor_id)
-            top_doctor.delete()
-            return JsonResponse({"status": 204, "message": "Top doctor deleted successfully"}, status=204)
-        except Top_doctors.DoesNotExist:
+        top_doctor = Top_doctors.objects.filter(top_doctor_id=top_doctor_id).first()
+        if not top_doctor:
             return JsonResponse({"error": "Top doctor not found", "status": 404}, status=404)
-    
+        
+        top_doctor.delete()
+        return JsonResponse({"status": 204, "message": "Top doctor deleted successfully"}, status=204)
+
+    # Invalid method handler
     return JsonResponse({"error": "Invalid request method", "status": 405}, status=405)
+
 
 
 
