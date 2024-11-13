@@ -64,22 +64,20 @@ def symptom_detail(request, pk):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 class BookAppointmentList(APIView):
+    parser_classes = [MultiPartParser, FormParser]  # To handle file uploads
 
-        parser_classes = [MultiPartParser, FormParser]  # To handle file uploads
-    
-        def post(self, request):
+    def post(self, request):
 
-            serializer = BookAppointmentSerializer(data=request.data, context={'request': request})
-            if serializer.is_valid():
-                serializer.save()
-                # create_notification(user_id,
-                #                                 "Quiz_Unsubcription",
-                #                                 f"INR {sub_amount} has been credited to wallet & Updated wallet Balance is {recipient_wallet.wallet_bal}")
-                # return Response(serializer.data, "status": "400",status=status.HTTP_201_CREATED)
-                return Response({"appointment_data": [serializer.data],"status":"200"}, status=200)
-            
-            else:
-                return JsonResponse({'errors': serializer.errors, "status": "400"}, status=400)
+        serializer = BookAppointmentSerializer(data=request.data, context={'request': request})
+        if serializer.is_valid():
+            serializer.save()
+            # create_notification(user_id,
+            #                                 "Quiz_Unsubcription",
+            #                                 f"INR {sub_amount} has been credited to wallet & Updated wallet Balance is {recipient_wallet.wallet_bal}")
+            # return Response(serializer.data, "status": "400",status=status.HTTP_201_CREATED)
+            return Response({"appointment_data": [serializer.data],"status":"200"}, status=200)
+        
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 
