@@ -27,6 +27,8 @@ urlpatterns = [
     path("staff/",include("app.urls.staff_urls")),
     path("promotions/",include("app.urls.promotion_urls")),
     path("notifications/", include('app.urls.notification_urls'))   ,
+    path("wallet/", include('app.urls.wallet_urls'))   ,
+
 
 
 
