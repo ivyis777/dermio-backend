@@ -1,9 +1,10 @@
 from django.http import JsonResponse
 from rest_framework.decorators import api_view
 
-from app.models.wallet_models import wallet
+from app.models.wallet_models import*
 from app.models.patient_models import Patient
 import json
+from app.serializers import WalletTranSerializer_credit,WalletTranSerializer_debit
 
 @api_view(['POST'])
 # @csrf_exempt
@@ -24,10 +25,22 @@ def wallet_bal(request):
 
         user= wallet.objects.filter(patient_id=patient_id).first()
 
+        user_transaction_debit=wallet_transactions_debit.objects.filter(is_from=patient_id)
+        # user_id=User.objects.get(id=user_id)
+        # print(user_id,1)
+        
+        serializer_debit=WalletTranSerializer_debit(user_transaction_debit,many=True)
+        # print(serializer_debit.data)
+        user_transaction_credit=wallet_transactions_credit.objects.filter(to=user.email)
+        # print(ser)
+
+        serializer_credit=WalletTranSerializer_credit(user_transaction_credit,many=True)
+        # print(serializer_credit.data,2)
+
         if user:
-            return JsonResponse({"Wallet balance": float(user.wallet_bal),"status": "200"})
+            # return JsonResponse({"Wallet balance": float(user.wallet_bal),"status": "200"})
             
-            # return JsonResponse({"Wallet balance": float(user.wallet_bal),"Debits":serializer_debit.data,"Credits":serializer_credit.data ,"status": "200"})
+            return JsonResponse({"Wallet balance": float(user.wallet_bal),"Debits":serializer_debit.data,"Credits":serializer_credit.data ,"status": "200"})
         else:
             return JsonResponse({"message": "User does not exist", "status": "404"})
         

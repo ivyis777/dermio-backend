@@ -5,10 +5,18 @@ from app.models.Staff_models import *
 from app.models.misc import *
 from app.models.patient_models import*
 from app.models.Staff_models import Slot
-
+from app.models.wallet_models import*
 
 from app.models.notifications_models import Notification
+class WalletTranSerializer_credit(serializers.ModelSerializer):
+    class Meta:
+        model=wallet_transactions_credit
+        exclude=['current_bal','to','to_user_id','is_from','is_credit']
 
+class WalletTranSerializer_debit(serializers.ModelSerializer):
+    class Meta:
+        model=wallet_transactions_debit
+        exclude=['current_bal','from_username','is_from','to_user_id','is_debit']
 class NotificationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Notification
@@ -18,6 +26,8 @@ class PatientSymptomsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Patient_Symptoms
         fields = ['symptom_id', 'symptom_name']
+
+
 
 
 
