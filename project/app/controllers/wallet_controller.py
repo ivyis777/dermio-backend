@@ -25,13 +25,13 @@ def wallet_bal(request):
 
         user= wallet.objects.filter(patient_id=patient_id).first()
 
-        user_transaction_debit=wallet_transactions_debit.objects.filter(is_from=patient_id)
+        user_transaction_debit=wallet_transactions_debit.objects.filter(patient_id=patient_id)
         # user_id=User.objects.get(id=user_id)
         # print(user_id,1)
         
         serializer_debit=WalletTranSerializer_debit(user_transaction_debit,many=True)
         # print(serializer_debit.data)
-        user_transaction_credit=wallet_transactions_credit.objects.filter(to=user.email)
+        user_transaction_credit=wallet_transactions_credit.objects.filter(to_user_id=user.patient_id)
         # print(ser)
 
         serializer_credit=WalletTranSerializer_credit(user_transaction_credit,many=True)
