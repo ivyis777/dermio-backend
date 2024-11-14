@@ -10,7 +10,7 @@ import json
 def wallet_bal(request):
     try:
         data = json.loads(request.body)
-        patient_id = data.get('user_id')
+        patient_id = data.get('patient_id')
         # print(data,type(user_id))
 
 
@@ -22,7 +22,7 @@ def wallet_bal(request):
             return JsonResponse({"error": "User ID is not registered", "status": "401"})
 
 
-        user= wallet.objects.filter(user_id=patient_id).first()
+        user= wallet.objects.filter(patient_id=patient_id).first()
 
         if user:
             return JsonResponse({"Wallet balance": float(user.wallet_bal),"status": "200"})
