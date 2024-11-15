@@ -20,12 +20,6 @@ urlpatterns = [
     path('symptoms/', symptom_list, name='symptom_list'),
     path('symptoms/<int:pk>/', symptom_detail, name='symptom_detail'),
 
-
-    # path("send_otp/",send_otp,name='send_otp'),
-    # path("send_otp/",send_otp,name='send_otp'),
-    # path("send_otp/",send_otp,name='send_otp'),
-    # path("send_otp/",send_otp,name='send_otp'),
-    # path("send_otp/",send_otp,name='send_otp'),
-    # path("send_otp/",send_otp,name='send_otp'),
+    path('verify-coupon/', VerifyCoupon.as_view(), name='verify-coupon'),
 
 ]

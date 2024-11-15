@@ -116,7 +116,7 @@ class Staff_MetaData(models.Model):
     Fullname_IMC=models.CharField(max_length=300,null=True)
     IMC_Reg_No=models.CharField(max_length=300,null=True)
     Days=models.TextField(db_column='Days' ,null=True,blank=True)
-    no_of_patients=models.IntegerField(default =250)
+    no_of_patients=models.IntegerField(default =250 )
 
     class Meta:
         db_table="staff_MetaData"
