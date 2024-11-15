@@ -23,6 +23,52 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
 from rest_framework.parsers import MultiPartParser, FormParser
 # from django.http.HttpRequest 
+from decimal import Decimal
+
+
+class VerifyCoupon(APIView):
+    
+    def post(self, request):
+        try:
+            data = json.loads(request.body)
+            print("data :",data)
+
+            # Extract data from the request
+            coupon_code = request.data.get('coupon_code')
+            amount = Decimal(data.get('amount', '0.0'))
+            
+            if not all([coupon_code,amount]):
+                return JsonResponse({'error': 'Missing required parameters.',"status":"404"}, status="404")
+            
+            # Check if the coupon exists
+            try:
+                coupon = Coupons.objects.get(coupon_code=coupon_code)
+            except Coupons.DoesNotExist:
+                return JsonResponse({'error': 'Invalid coupon code.',"status":"405"}, status=405)
+            
+            
+            coupon_obj = Coupons.objects.get(coupon_code=coupon,is_active=True)
+            current_date = timezone.now().date()            
+            
+            if not (coupon_obj.valid_from <= current_date <= coupon_obj.valid_till):
+                    return JsonResponse({'error': 'Coupon is not valid on the current date.', "status": "401"}, status=401)
+            else  :
+                coupon_obj = Coupons.objects.get(coupon_code=coupon,is_active=True)
+                
+                coupon_percentage = coupon_obj.percentage
+                amount_claimed=(amount * coupon_percentage / 100)
+                amount = amount - (amount * coupon_percentage / 100)
+            
+                return JsonResponse({"message" :"Coupon is verified","amount":amount ,"coupon_applied":True,"amount_deducted":amount_claimed,"status":"200" },status=200)
+
+        
+        except Exception as e:
+            return JsonResponse({'error': str(e),"status":"500"}, status=500)
+
+
+
+
+
 
 
 @api_view(['GET', 'POST'])

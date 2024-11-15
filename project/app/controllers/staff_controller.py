@@ -450,7 +450,7 @@ def staff_meta_data_create_or_update(request, staff_meta_id=None):
         # If a specific staff_meta_id is provided, retrieve that instance
         if staff_meta_id:
             try:
-                staff_meta = Staff_MetaData.objects.get(staff_meta_id=staff_meta_id)
+                staff_meta = Staff_MetaData.objects.get(doctor_id=staff_meta_id)
                 serializer = StaffMetaDataSerializer(staff_meta)
                 return JsonResponse({"status": 200, "data": serializer.data})
             except Staff_MetaData.DoesNotExist:
