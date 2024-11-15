@@ -20,6 +20,8 @@ urlpatterns = [
     path('symptoms/', symptom_list, name='symptom_list'),
     path('symptoms/<int:pk>/', symptom_detail, name='symptom_detail'),
 
-    path('verify-coupon/', VerifyCoupon.as_view(), name='verify-coupon'),
+    path('verify_coupon/', VerifyCoupon.as_view(), name='verify-coupon'),
+    path('coupons/', CouponsAPIView.as_view()),           # For GET (all) and POST
+
 
 ]

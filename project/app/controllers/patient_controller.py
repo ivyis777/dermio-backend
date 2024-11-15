@@ -25,6 +25,38 @@ from rest_framework.parsers import MultiPartParser, FormParser
 # from django.http.HttpRequest 
 from decimal import Decimal
 
+class CouponsAPIView(APIView):
+
+    def get(self, request, coupon_id=None):
+        if coupon_id:
+            coupon = get_object_or_404(Coupons, coupon_id=coupon_id)
+            serializer = CouponsSerializer(coupon)
+            return JsonResponse({"status": "200", "data": serializer.data})
+        else:
+            coupons = Coupons.objects.all()
+            serializer = CouponsSerializer(coupons, many=True)
+            return JsonResponse({"status": "200", "data": serializer.data})
+
+    def post(self, request):
+        serializer = CouponsSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return JsonResponse({"status": "200", "data": serializer.data})
+        return JsonResponse({"status": "400", "errors": serializer.errors})
+
+    def delete(self, request, coupon_id):
+        coupon = get_object_or_404(Coupons, coupon_id=coupon_id)
+        coupon.delete()
+        return JsonResponse({"status": "204", "message": "Coupon deleted successfully"})
+
+    def put(self, request, coupon_id):
+        coupon = get_object_or_404(Coupons, coupon_id=coupon_id)
+        serializer = CouponsSerializer(coupon, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return JsonResponse({"status": "200", "data": serializer.data})
+        return JsonResponse({"status": "400", "errors": serializer.errors})
+
 
 class VerifyCoupon(APIView):
     
