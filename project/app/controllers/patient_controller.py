@@ -147,13 +147,17 @@ class BookAppointmentList(APIView):
 
     def post(self, request):
 
+        patient = request.user
         serializer = BookAppointmentSerializer(data=request.data, context={'request': request})
         if serializer.is_valid():
             serializer.save()
-            # create_notification(user_id,
+            data=serializer.data
+            print(data[0].net_payable)
+            # create_notification(patient.patient_id,
             #                                 "Quiz_Unsubcription",
             #                                 f"INR {sub_amount} has been credited to wallet & Updated wallet Balance is {recipient_wallet.wallet_bal}")
             # return Response(serializer.data, "status": "400",status=status.HTTP_201_CREATED)
+
             return Response({"appointment_data": [serializer.data],"status":"200"}, status=200)
         
         else:
