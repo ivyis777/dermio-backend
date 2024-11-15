@@ -152,7 +152,7 @@ class BookAppointmentList(APIView):
         if serializer.is_valid():
             serializer.save()
             data=serializer.data
-            print(data[0])
+            print(data)
             # create_notification(patient.patient_id,
             #                                 "Quiz_Unsubcription",
             #                                 f"INR {sub_amount} has been credited to wallet & Updated wallet Balance is {recipient_wallet.wallet_bal}")
