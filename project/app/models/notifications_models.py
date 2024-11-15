@@ -4,7 +4,7 @@ from app.models.patient_models import Patient
 
 
 class Notification(models.Model):
-    user_id=models.ForeignKey(Patient,on_delete=models.CASCADE,to_field='id',db_column='user_id', db_constraint=False,null=True,blank=True)
+    patient_id=models.ForeignKey(Patient,on_delete=models.CASCADE,to_field='id',db_column='patient_id', db_constraint=False,null=True,blank=True)
     title = models.CharField(max_length=100)
     message = models.TextField()
     timestamp = models.DateTimeField(auto_now_add=True)
