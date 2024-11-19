@@ -26,6 +26,9 @@ def create_notification(to_user_id,Title,message):
 class NotificationList(APIView):
 
     def get(self, request,pk, *args, **kwargs):
+
+        patient = request.user
+
         try:
             # data=json.loads(request.body)
             print("pk : ",pk)
