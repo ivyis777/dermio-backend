@@ -16,7 +16,7 @@ class WalletTranSerializer_credit(serializers.ModelSerializer):
 class WalletTranSerializer_debit(serializers.ModelSerializer):
     class Meta:
         model=wallet_transactions_debit
-        exclude=['current_bal','from_username','is_from','to_user_id']
+        exclude=['current_bal','is_from','to_user_id']
 class NotificationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Notification
