@@ -23,7 +23,7 @@ class wallet_transactions_debit(models.Model):
     patient_id=models.ForeignKey(Patient,on_delete=models.CASCADE,to_field='id',db_column='to_patient_id', db_constraint=False,null=True,blank=True)
     date_time=models.DateTimeField()
     amount=models.DecimalField(max_digits=10, decimal_places=2)
-    is_debit=models.BooleanField(default=True)
+    is_paid=models.BooleanField(default=True)
     to=models.CharField(max_length=40,db_column='to')
     current_bal=models.DecimalField(max_digits=10, decimal_places=2,default=0.00) 
     created_at = models.DateTimeField(auto_now=True)
