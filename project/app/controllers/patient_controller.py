@@ -281,6 +281,7 @@ def update_profile_page(request):
 
         # Extract JSON data from form-data
         data = request.POST.get('data', '{}')
+        print("Data : ",data)
         try:
             data = json.loads(data)
         except json.JSONDecodeError:
