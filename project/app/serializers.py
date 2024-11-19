@@ -11,12 +11,12 @@ from app.models.notifications_models import Notification
 class WalletTranSerializer_credit(serializers.ModelSerializer):
     class Meta:
         model=wallet_transactions_credit
-        exclude=['current_bal','to','to_user_id','is_from','is_credit']
+        exclude=['current_bal','to','to_user_id','is_from']
 
 class WalletTranSerializer_debit(serializers.ModelSerializer):
     class Meta:
         model=wallet_transactions_debit
-        exclude=['current_bal','from_username','is_from','to_user_id','is_debit']
+        exclude=['current_bal','from_username','is_from','to_user_id']
 class NotificationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Notification
