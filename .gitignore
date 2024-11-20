@@ -15,4 +15,4 @@ __pycache__/
 
 # Ignore environment variable files
 .env
-project/credentials/google_services.json
+
