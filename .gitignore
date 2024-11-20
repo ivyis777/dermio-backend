@@ -15,5 +15,5 @@ __pycache__/
 
 # Ignore environment variable files
 .env
-project/secure-config/google-services.json
+project/secure-config/google-servicess.json
 google-services.json
