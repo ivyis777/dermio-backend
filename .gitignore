@@ -15,4 +15,5 @@ __pycache__/
 
 # Ignore environment variable files
 .env
+/home/ubuntu/dermio-backend/project/secure-config/google-services.json
 
