@@ -644,7 +644,7 @@ def register_user(request):
             username = data.get('username')
             otp =data.get('otp')
             mobile=data.get('mobile')
-            # fcm_token=data.get('fcm_token','null')
+            fcm_token=data.get('fcm_token','null')
 
             try:
                 if email != '' and username != '' and otp != '' and mobile != '':
@@ -674,7 +674,7 @@ def register_user(request):
 
                             # user=user
 
-                            patient = Patient.objects.create(email=email,registeredat=timezone.now(),username=username,mobile=mobile)
+                            patient = Patient.objects.create(email=email,registeredat=timezone.now(),username=username,mobile=mobile,fcm_token=fcm_token)
                             patient_id=patient
                             print("patient id",patient_id)
                             wallets=wallet.objects.create(patient_id=patient_id,wallet_bal=1000,email=patient_id)
