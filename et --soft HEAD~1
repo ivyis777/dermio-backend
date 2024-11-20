@@ -1,0 +1,1246 @@
+[33mcommit 044edfd265958eebf51c00e6def3e864dbfc3d9c[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Wed Nov 20 11:27:38 2024 +0530
+
+    deleted google services
+
+[33mcommit 0e9f7a869dccfff5649b34db5a7ab217ad6e4643[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Wed Nov 20 11:11:36 2024 +0530
+
+    firebase_config-1
+
+[33mcommit 72a9ae2dd5440d976a72e588ca3f341da2b8a341[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Wed Nov 20 11:09:13 2024 +0530
+
+    firebase_config
+
+[33mcommit aa9ae59778de440b0663a6103c5021bc746dc7c8[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Tue Nov 19 17:54:23 2024 +0530
+
+    wallet model debit changed to is_paid serializer-2
+
+[33mcommit 3a5c408af5b6d022b2787ad02e9096c88c633753[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Tue Nov 19 17:52:52 2024 +0530
+
+    wallet model debit changed to is_paid serializer-1
+
+[33mcommit 87f0812e8ca26f91bc6a3eaffc8aafc24cdcffb2[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Tue Nov 19 17:37:56 2024 +0530
+
+    wallet model debit changed to is_paid serializer
+
+[33mcommit 6599a0201e258d944353021aa97890fff805ecd3[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Tue Nov 19 12:05:44 2024 +0000
+
+    add migrations
+
+[33mcommit 00e1acbd17740f94be109b280ebdc395a4c1eba1[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Tue Nov 19 17:34:35 2024 +0530
+
+    wallet model debit changed to is_paid
+
+[33mcommit 55cbf6efb51b0e035090b35a477d86848a3986de[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Tue Nov 19 17:32:47 2024 +0530
+
+    wallet model credit changed to is_receieved
+
+[33mcommit 059f53970ce3f56ae96fa71e67d30e8e3ba1d094[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Tue Nov 19 12:55:31 2024 +0530
+
+    updated profile api
+
+[33mcommit 9319ff0b9a7cf301da2c76f34b270d8f88ac9064[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Tue Nov 19 05:39:13 2024 +0000
+
+    firebas integrations-1
+
+[33mcommit b4087c7ed5009a5f3f57c0b92c6fa60a3613bb45[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Tue Nov 19 05:25:31 2024 +0000
+
+    firebas integrations
+
+[33mcommit 7443ee959c021ee4055bcef1a36a06a206e3e3b8[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Tue Nov 19 10:36:47 2024 +0530
+
+    added firebase
+
+[33mcommit dce52fe27faa58cc96132e252167937648d01539[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Tue Nov 19 05:05:40 2024 +0000
+
+    19-11-2024
+
+[33mcommit 0b56a33f8a7a0d5e0d6e90af416a467540b17a02[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Fri Nov 15 19:19:34 2024 +0530
+
+    modifications on notifications-4
+
+[33mcommit 486d3f48f255e3d2760faa4a989569e756b798a5[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Fri Nov 15 18:27:48 2024 +0530
+
+    modifications on notifications-3
+
+[33mcommit 8be4ebd16ae93123fe54343a89473beb0c124175[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Fri Nov 15 18:23:34 2024 +0530
+
+    modifications on notifications-2
+
+[33mcommit 75be79ee35fb70082fec502d5f2411fc8cae26a0[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Fri Nov 15 18:22:33 2024 +0530
+
+    modifications on notifications-1
+
+[33mcommit 23a0bd00eb0c0af5b558c3f5a1b5adcc386ff5a5[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Fri Nov 15 18:20:26 2024 +0530
+
+    modifications on notifications
+
+[33mcommit 336241bc403f08d2a47c057a9a2d0787549a674b[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Fri Nov 15 18:06:17 2024 +0530
+
+    cjanged notification model userid to patient id
+
+[33mcommit 2eafce7ea4a3c272b868733959a79227f9ee00b2[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Fri Nov 15 17:16:53 2024 +0530
+
+    coupons
+
+[33mcommit 204e9fec199d5d35d6d9833a7f759a3b567d502c[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Fri Nov 15 15:33:46 2024 +0530
+
+    verify coupon
+
+[33mcommit a5530696bcbe806cbe7654227548fb1081953426[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Fri Nov 15 14:29:34 2024 +0530
+
+    staff meta get modified-1
+
+[33mcommit 5dbe8906b8ad1bfff8d5c896d94a1cd2bf89d315[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Fri Nov 15 14:28:00 2024 +0530
+
+    staff meta get modified
+
+[33mcommit fe34e98de747ede95ecec04ba54055e0b0ae6668[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Thu Nov 14 18:08:44 2024 +0530
+
+    wallets-2
+
+[33mcommit de1a92fe6221b891a69d0aafae8810f4474d0f06[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Thu Nov 14 18:04:15 2024 +0530
+
+    wallets-1
+
+[33mcommit a3596951359a01fe78868bf436125e9fef115a8a[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Thu Nov 14 17:48:41 2024 +0530
+
+    wallets
+
+[33mcommit 1865d8ff4048e3c7189d7abcb8ae31a55c628c46[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Thu Nov 14 17:21:05 2024 +0530
+
+    added wallet-1
+
+[33mcommit cef448bc0053e012ee16da4198c3aed449ad2a3c[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Thu Nov 14 17:18:32 2024 +0530
+
+    added wallet
+
+[33mcommit e0d0e7eba6acaae2733ecfec87ff465d9c7d436d[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Thu Nov 14 14:25:16 2024 +0530
+
+    added no of patients-1
+
+[33mcommit 888f2227e1d0e97cab93421b64394f9512d09a4d[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Thu Nov 14 08:54:31 2024 +0000
+
+    no of patients
+
+[33mcommit 7a5449f0c6520d5e157793f698205bbaa358f097[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Thu Nov 14 13:03:58 2024 +0530
+
+    added no of patients
+
+[33mcommit d1774d4e659ebb185b87ea96dab930bd7d8517af[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Thu Nov 14 04:34:50 2024 +0000
+
+    added images
+
+[33mcommit d1984dbfeb046b282e4ff031b317b05aff11c85f[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Wed Nov 13 19:07:36 2024 +0530
+
+    modified patient controller-3
+
+[33mcommit b4e031747bae03c780c0359638ff8bffd2a655cf[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Wed Nov 13 19:05:59 2024 +0530
+
+    modified patient controller-2
+
+[33mcommit 65109fb71b3c178d3eecd41cb26fa2c436cc110a[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Wed Nov 13 19:04:03 2024 +0530
+
+    modified patient controller-1
+
+[33mcommit 260d79401899aa1e9e587cf4ee06cc54decbf1aa[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Wed Nov 13 19:02:34 2024 +0530
+
+    modified patient controller
+
+[33mcommit c788f887f57f9c6c920194a37555cff043134a4e[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Tue Nov 12 12:35:22 2024 +0000
+
+    removed vevn
+
+[33mcommit 3d84d3c011d7c1af10f11d3284732cca11b5c54e[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Mon Nov 11 16:58:58 2024 +0530
+
+    top doctors-10
+
+[33mcommit cc75d16cc543e71abf3d45b8726c1d18e99546a7[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Mon Nov 11 16:54:54 2024 +0530
+
+    top doctors-9
+
+[33mcommit ea01d9944ec651458bf5955702a0955281fe71bc[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Mon Nov 11 16:53:17 2024 +0530
+
+    top doctors-8
+
+[33mcommit e2da290f0735535fbfc273029c1f44b1d5efefe2[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Mon Nov 11 16:52:16 2024 +0530
+
+    top doctors-7
+
+[33mcommit a1b1e51e2cd8f9bde2bcc6df16bf84c58ac9ca6e[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Mon Nov 11 16:50:56 2024 +0530
+
+    top doctors-6
+
+[33mcommit e512cc4f16a095a8c77109c0172e02d8b2162fca[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Mon Nov 11 16:49:41 2024 +0530
+
+    top doctors-5
+
+[33mcommit daa10d7de9a9d67687690e01cc16318b5df95f2d[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Mon Nov 11 16:48:48 2024 +0530
+
+    top doctors-4
+
+[33mcommit a017bce06bb26bb747834edce98d8bf687207fc0[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Mon Nov 11 16:48:01 2024 +0530
+
+    top doctors-3
+
+[33mcommit 7c374950fb3344c704370322659ac7deb193c5b6[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Mon Nov 11 16:47:04 2024 +0530
+
+    top doctors-2
+
+[33mcommit ee9afc692630db99aca9dc47eead6f955985bd75[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Mon Nov 11 16:42:24 2024 +0530
+
+    top doctors-1
+
+[33mcommit 77850b80490fad719029670e9b3d426531beda00[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Mon Nov 11 16:38:37 2024 +0530
+
+    top doctors
+
+[33mcommit 5e98fb7bc7a34dac2674ba2cbc74abd073b7aac9[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Fri Nov 8 19:13:10 2024 +0530
+
+    top doctors-5
+
+[33mcommit 02688d2fb04c2f46e9acb7c045ea9ec79ef0a62c[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Fri Nov 8 19:12:08 2024 +0530
+
+    top doctors-4
+
+[33mcommit b72525100fc354f05424fcf04a414952c8020a68[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Fri Nov 8 19:07:21 2024 +0530
+
+    top doctors-3
+
+[33mcommit caf65bc8c132d5ed63c0c69d85cdeb279882f280[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Fri Nov 8 19:06:40 2024 +0530
+
+    top doctors-2
+
+[33mcommit b6fcc842b7042c0c2cab44a682d82326c65b5b56[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Fri Nov 8 19:01:56 2024 +0530
+
+    top doctors-1
+
+[33mcommit d3696e5e83780eaf3e040192fb23b74a21d25262[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Fri Nov 8 18:56:47 2024 +0530
+
+    top doctors
+
+[33mcommit 2f94689a134d4a0fdb28592c347f3988364a073b[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Fri Nov 8 18:16:11 2024 +0530
+
+    staff meta update and get 8
+
+[33mcommit 6004f3d5f558b7a0a9322461bbe5b4f787f9a9db[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Fri Nov 8 18:07:12 2024 +0530
+
+    check availability 8
+
+[33mcommit 2c878ab4de0f035cb0f522a6a93a0bb36c5ee1d2[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Fri Nov 8 18:06:17 2024 +0530
+
+    check availability 7
+
+[33mcommit e9c651ad118cd3fb9b556023286fc9626c129d65[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Fri Nov 8 18:05:11 2024 +0530
+
+    check availability 6
+
+[33mcommit 2205b066c41ab136b65f2bcaab286cece80a1db5[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Fri Nov 8 17:07:18 2024 +0530
+
+    modified check availability controller-5
+
+[33mcommit 4a0d7e389c574094347dfb224795d4db75cf4ce4[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Fri Nov 8 15:30:43 2024 +0530
+
+    modified check availability controller-4
+
+[33mcommit 94d365bee24386572da68e134cc145611740a1ef[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Fri Nov 8 15:28:56 2024 +0530
+
+    modified check availability controller-4
+
+[33mcommit 297a6c4efb07ea77802d63c45141c28087db4291[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Fri Nov 8 15:26:49 2024 +0530
+
+    modified check availability controller-3
+
+[33mcommit c4cfacac8847f6b05910505df779e8f121f78e51[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Fri Nov 8 15:25:21 2024 +0530
+
+    modified check availability controller-2
+
+[33mcommit adc4f8c596b8f144f6c7227b1406732d505dc9f0[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Fri Nov 8 15:21:47 2024 +0530
+
+    modified check availability controller-1
+
+[33mcommit fb8c2ed4cb34b5ccc6a2fc5b08ef9cd58384f2fe[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Fri Nov 8 15:16:40 2024 +0530
+
+    modified check availability controller
+
+[33mcommit 738440dee0f46485bad69f610709ac5c4622f321[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Fri Nov 8 14:59:36 2024 +0530
+
+    added slot durations to StaffMetaData
+
+[33mcommit 229f190255f928cfeb85217ac7d799047be7e164[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Thu Nov 7 18:45:37 2024 +0530
+
+    staff_meta-6
+
+[33mcommit 6a8994793a6ad7cb38212e3b7966806073068e14[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Thu Nov 7 18:42:25 2024 +0530
+
+    staff_meta-5
+
+[33mcommit be3616b00c1cd7974f65cc6d0b206dfd02e859b3[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Thu Nov 7 18:39:46 2024 +0530
+
+    staff_meta-4
+
+[33mcommit b29a7456253d5d59c8aa2885c9676a1181835f32[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Thu Nov 7 18:35:50 2024 +0530
+
+    staff_meta-3
+
+[33mcommit 9f062c831313dc976b02d8283d34efa3e3e32249[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Thu Nov 7 18:33:03 2024 +0530
+
+    staff_meta-2
+
+[33mcommit 2dc0d9a2576a4eb6323f4e7e717f06244f29969d[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Thu Nov 7 18:32:15 2024 +0530
+
+    staff_meta-1
+
+[33mcommit c69b0c187d1d7c89bda40d580ab002d841e89759[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Thu Nov 7 18:30:46 2024 +0530
+
+    staff_meta
+
+[33mcommit a32c1af490550d08b4e080e07b451bf355ed4ede[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Thu Nov 7 12:50:53 2024 +0000
+
+    added images
+
+[33mcommit b1d58d26de4ea3cb22b79d384d4dfdcc95e0d9a5[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Thu Nov 7 18:19:55 2024 +0530
+
+    serializer
+
+[33mcommit 19b7eaaee68efb184f57427926da26916d6dcc0b[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Thu Nov 7 18:12:15 2024 +0530
+
+    modified patient model-10
+
+[33mcommit 9d4b5c535d80762593d3871e8364d63ce4ec3254[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Thu Nov 7 17:20:54 2024 +0530
+
+    modified patient model-9
+
+[33mcommit 310c5cfbb962256d3e48ec17079b361de600c639[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Thu Nov 7 17:17:51 2024 +0530
+
+    modified patient model-8
+
+[33mcommit fb06660fe76b228aa7014398496a8dd91edd78bf[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Thu Nov 7 17:15:24 2024 +0530
+
+    modified patient model-7
+
+[33mcommit e78326f0c142cb523df9f6c49ecea125256f49ee[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Thu Nov 7 17:06:38 2024 +0530
+
+    modified patient model-6
+
+[33mcommit 3c30c224d24eb174effee44fd06392d1e1777f73[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Thu Nov 7 11:33:58 2024 +0000
+
+    added staff cache
+
+[33mcommit c3ea9ff98d028d8054e47bdba5d5b5f7fc2a7b6c[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Thu Nov 7 17:03:11 2024 +0530
+
+    modified patient model-5
+
+[33mcommit e1f87426d7b8d64e7c3e7920ddeaa346aaa77c77[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Thu Nov 7 11:23:18 2024 +0000
+
+    migrations of staff
+
+[33mcommit 9eb12256f947438297d560aa1008c9c0ce515c77[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Thu Nov 7 11:16:42 2024 +0000
+
+    staff_models
+
+[33mcommit 58c8eb17504baed6469723c5c5262093c60ab819[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Thu Nov 7 16:40:57 2024 +0530
+
+    modified patient model-3
+
+[33mcommit 549cd99ec394104f87caf984ceac73a57e670182[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Thu Nov 7 16:29:39 2024 +0530
+
+    modified patient model-2
+
+[33mcommit a275c1f2988c5224611abb25073ef17bf3c13152[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Thu Nov 7 16:25:19 2024 +0530
+
+    modified patient model-1
+
+[33mcommit ab0107deba6adf0b2ecee89efa199ac908e1024b[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Thu Nov 7 10:50:55 2024 +0000
+
+    added media
+
+[33mcommit d3130065c39add6abca79f2ffd96c02c0e9070d5[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Thu Nov 7 16:04:11 2024 +0530
+
+    modified patient model
+
+[33mcommit 0b72956a86cb7566ec49d3d84ad264cb9d57b738[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Thu Nov 7 15:40:21 2024 +0530
+
+    images-2
+
+[33mcommit 339b4b8d72519972084d4357dee63d322ea9c10b[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Thu Nov 7 15:39:15 2024 +0530
+
+    images-1
+
+[33mcommit 28bd942c42aee6a972687ea2c5c22d1260aac2f7[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Thu Nov 7 09:43:36 2024 +0000
+
+    added fields
+
+[33mcommit 835c569f7c9027bdf3503b451afa650eba2142e2[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Thu Nov 7 14:55:47 2024 +0530
+
+    staff model
+
+[33mcommit 6a3b68dcc384d10dbf5faea20481941777c02775[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Thu Nov 7 14:16:49 2024 +0530
+
+    staff controller
+
+[33mcommit a4fe45f5138fab595255f92469bf348016022308[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Thu Nov 7 14:12:39 2024 +0530
+
+    staff urls
+
+[33mcommit e23153002c2810c9b54b6ed70908b7d2f8b081e6[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Wed Nov 6 19:22:56 2024 +0530
+
+    patient image
+
+[33mcommit b234f2177b57f860ee1639ae9a7e7646637de599[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Wed Nov 6 16:37:31 2024 +0530
+
+    patient images
+
+[33mcommit 675377ed7708b83537c1f4efffd107eaa47ee43e[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Wed Nov 6 16:36:09 2024 +0530
+
+    added images
+
+[33mcommit d053c80d974a3fd7d9592edcbf63203a78fe1fb3[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Wed Nov 6 11:04:06 2024 +0000
+
+    migrations of staffmetadata image
+
+[33mcommit 63fa8b8c59757a0f19c2417526d8eb1ed4d6edb0[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Wed Nov 6 16:31:33 2024 +0530
+
+    changed image path of staff_meta_data
+
+[33mcommit 4dd68ddf5c48c8b0c58876ec3bc17528bb8dd939[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Wed Nov 6 10:57:05 2024 +0000
+
+    removed images
+
+[33mcommit 86e1b5ed4531508ea6241adb8c7db65cd37ebfdc[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Wed Nov 6 10:52:59 2024 +0000
+
+    created images folder
+
+[33mcommit eee14723ad8398cb84f4a809e9707756d0e5aa22[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Wed Nov 6 10:39:41 2024 +0000
+
+    Untrack ec2venv directory
+
+[33mcommit 57549edb6f9991624c6a19705634a06899e92792[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Wed Nov 6 10:32:15 2024 +0000
+
+    Add .gitignore and remove unnecessary tracked files
+
+[33mcommit 98e3b193ddfcbb6d4fcbc22aadf2976e54ead817[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Wed Nov 6 14:39:41 2024 +0530
+
+    changed media root
+
+[33mcommit 1037eb9c949572cd867e3e865ddba4cd466f23ec[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Wed Nov 6 06:32:13 2024 +0000
+
+    deleted pics
+
+[33mcommit 09fd7cb2ba22770a0454ca7afb1705b6d563bbb3[m
+Merge: 85adda20 1073b48c
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Tue Nov 5 13:13:10 2024 +0000
+
+    Merge branch 'master' of https://github.com/ivyis777/dermio-backend
+
+[33mcommit 1073b48c5f0906390faced0dfa7fdd4efb5da53a[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Tue Nov 5 18:42:45 2024 +0530
+
+    deleted files
+
+[33mcommit 85adda20acd0a9c8c3f273b7c456de0626603de2[m
+Merge: 813dabae 3d6e12c6
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Tue Nov 5 13:05:07 2024 +0000
+
+    Merge branch 'master' of https://github.com/ivyis777/dermio-backend
+
+[33mcommit 3d6e12c641edcc47d75b22a6777d09e3c7b43c8e[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Tue Nov 5 18:33:46 2024 +0530
+
+    delete png
+
+[33mcommit 0c65723e1891bad5c0b60ea9f157e30c2ed0dca9[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Tue Nov 5 18:27:25 2024 +0530
+
+    Remove problematic image paths from cache
+
+[33mcommit 813dabaea119542564a48830db7c87131a1f24ab[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Tue Nov 5 12:53:42 2024 +0000
+
+    dr dept
+
+[33mcommit bf55e037a05a62b15dd58b223f1bf7096624968e[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Mon Nov 4 19:09:10 2024 +0530
+
+    patient model
+
+[33mcommit 21f67c69cd1109c6a5f5a008474f0335adea56b0[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Mon Nov 4 18:54:34 2024 +0530
+
+    top doctors-2
+
+[33mcommit 908030c2b95dcbbea194dceb22de1063bf35012a[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Mon Nov 4 13:17:29 2024 +0000
+
+    top doctors
+
+[33mcommit 431c194744190938bc8fa23dc9b75613a0b62c0e[m
+Merge: 63a8f956 213e0543
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Mon Nov 4 13:16:36 2024 +0000
+
+    Merge branch 'master' of https://github.com/ivyis777/dermio-backend
+
+[33mcommit 63a8f9568404015566e214ebfe24fbae7fd3c89b[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Mon Nov 4 13:15:51 2024 +0000
+
+    cache
+
+[33mcommit 213e0543826f092bf0c52fc012e92ba0bc88aa3a[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Mon Nov 4 18:42:44 2024 +0530
+
+    top doctors
+
+[33mcommit c8b40e0c220cb06663eeba58e1ad6b40b6aa1fdb[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Mon Nov 4 13:34:47 2024 +0530
+
+    get_profile-3
+
+[33mcommit 06585b3906b5811e8dd4b9f73dd93b69870bfc5f[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Mon Nov 4 13:32:00 2024 +0530
+
+    get_profile-2
+
+[33mcommit adc5794e2613d7ab8656f40ca85907ff8fe0d4f6[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Mon Nov 4 13:29:44 2024 +0530
+
+    get_profile-1
+
+[33mcommit f79ed3aca71ce4d9c158ee295f4926b5007edcfc[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Mon Nov 4 12:55:12 2024 +0530
+
+    get_profile
+
+[33mcommit 513c51159ec870c2847410434b18365b05852c81[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Mon Nov 4 12:25:24 2024 +0530
+
+    staff url
+
+[33mcommit 640ae5060d35ef76d34faf48af12e1fc9913ec60[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Mon Nov 4 06:53:59 2024 +0000
+
+    patient dob
+
+[33mcommit c94d071f06b14e0d04ddbe9d171dc1cdbff750d5[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Mon Nov 4 12:09:56 2024 +0530
+
+    regular 4-11-2024 -2
+
+[33mcommit 4e196617e40950f2a76248799385a35607f2703e[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Mon Nov 4 12:08:33 2024 +0530
+
+    regular 4-11-2024 -1
+
+[33mcommit 7dd729c97d03c52e86cd7cc0f17c32afe6ddd07a[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Mon Nov 4 12:06:36 2024 +0530
+
+    regular 4-11-2024
+
+[33mcommit 4d648da6612bbcf8628f75678e2c053891e3f081[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Wed Oct 30 11:37:04 2024 +0530
+
+    staffmeta
+
+[33mcommit 9527f21a66d4c65a1a442991124e3ff5015577b1[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Wed Oct 30 04:30:44 2024 +0000
+
+    30-10-2024 mornig
+
+[33mcommit 2495d57b5a801b50c175a0fbffb8832c6fd58897[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Tue Oct 29 17:25:36 2024 +0530
+
+    staff_meta-3
+
+[33mcommit 5f7a062c7fd211df11166061275b9f71a7ba776a[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Tue Oct 29 17:14:23 2024 +0530
+
+    staff_meta-2
+
+[33mcommit bd32357b27c86fc20bfce6cf7f3bae13fba04caf[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Tue Oct 29 17:08:35 2024 +0530
+
+    staff_meta-1
+
+[33mcommit 57df275527bc0902066c1c264cc634975612d03b[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Tue Oct 29 11:34:17 2024 +0000
+
+    migrations staff
+
+[33mcommit 6ef7eec17407db06c99cb5109dcd7e0027652f49[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Tue Oct 29 17:00:48 2024 +0530
+
+    staff_meta
+
+[33mcommit 6c83cffafd2ead13296fa52b9b3bfba9494a01b0[m
+Merge: 6127e8bc f323e33f
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Tue Oct 29 11:22:14 2024 +0000
+
+    Removed conflicting .pyc files
+
+[33mcommit f323e33ffef1cce22b292dfba8748e0a944e7815[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Tue Oct 29 16:43:16 2024 +0530
+
+    staff_meta_get-19
+
+[33mcommit 6127e8bc7073710ce9e2a25f6c292e4f8c6b2518[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Tue Oct 29 11:12:16 2024 +0000
+
+    regular
+
+[33mcommit 652821e43b1a7b685810d8bf229ac4daf2e6bba0[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Tue Oct 29 16:41:46 2024 +0530
+
+    staff_meta_get-18
+
+[33mcommit e2c6299f24b9870a22bcb0fbb50ac802ba2fd8c8[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Tue Oct 29 16:39:16 2024 +0530
+
+    staff_meta_get-17
+
+[33mcommit 41735761876692ec19531e07c58fd63ce0264fb5[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Tue Oct 29 16:38:27 2024 +0530
+
+    staff_meta_get-16
+
+[33mcommit fe43517f9d14d507be3b827ccaa145e78761f33b[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Tue Oct 29 16:37:36 2024 +0530
+
+    staff_meta_get-15
+
+[33mcommit 73af89bc28a11e5fb9ba40219d8ce546995dde61[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Tue Oct 29 16:36:46 2024 +0530
+
+    staff_meta_get-14
+
+[33mcommit 764539d4f2e2c7f6063a188244cbca6573ab1c8f[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Tue Oct 29 16:35:36 2024 +0530
+
+    staff_meta_get-13
+
+[33mcommit d5fb72ee2b8d00363cca7aeae17a3f33fa878a2f[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Tue Oct 29 11:04:37 2024 +0000
+
+    regular
+
+[33mcommit c0d19c7f30a0d9835b141b4adb990ec013d644c4[m
+Merge: 54459192 167df662
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Tue Oct 29 16:33:40 2024 +0530
+
+    staff_meta_get-12
+
+[33mcommit 544591922327440896ef929968084d6f5ee47a74[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Tue Oct 29 16:32:56 2024 +0530
+
+    staff_meta_get-11
+
+[33mcommit 167df66280fba04ce0e2d8881cb02ba50dbe745d[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Tue Oct 29 10:59:21 2024 +0000
+
+    stagg_meta table name change
+
+[33mcommit 828d998e8aa6274cb8d5230bca45a20fa806d50b[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Tue Oct 29 16:24:41 2024 +0530
+
+    staff_meta_get-10
+
+[33mcommit dad8c719e384e51bab78ffebb0e4459cb68601b4[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Tue Oct 29 10:50:49 2024 +0000
+
+    working on migrations
+
+[33mcommit b43affd343511702883e0a04effaf6b6ba1cb1ad[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Tue Oct 29 16:18:59 2024 +0530
+
+    staff_meta_get-9
+
+[33mcommit 32edcb29b7309549d332246770d6befb4583d17b[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Tue Oct 29 16:17:50 2024 +0530
+
+    staff_meta_get-8
+
+[33mcommit b7473e22801c1519ea62f742320831cf396eb708[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Tue Oct 29 16:16:40 2024 +0530
+
+    staff_meta_get-7
+
+[33mcommit 4837d67e1e6668940f887a14b2ad2b035bf51a68[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Tue Oct 29 16:13:34 2024 +0530
+
+    staff_meta_get-6
+
+[33mcommit a830608002d8a52afa214cae69cb8d6a47ad0cc7[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Tue Oct 29 16:12:32 2024 +0530
+
+    staff_meta_get-5
+
+[33mcommit 4400f884f0b04d33369df974c0347ebda4d7e61b[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Tue Oct 29 16:09:41 2024 +0530
+
+    staff_meta_get-4
+
+[33mcommit 0a2a8dca3f397f888e987e481106699636f54333[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Tue Oct 29 16:05:58 2024 +0530
+
+    staff_meta_get-3
+
+[33mcommit 36e6f9f158c74995e2e6303f9e80ad76bdeb4a4e[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Tue Oct 29 15:05:31 2024 +0530
+
+    staff_meta_get-2
+
+[33mcommit a5d04c2308c466078b92a4e91a376465150d6850[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Tue Oct 29 15:03:25 2024 +0530
+
+    staff_meta_get-1
+
+[33mcommit 63a85bd5ec0acb89f1b7f0c1de758e0c31f64ec6[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Tue Oct 29 14:59:32 2024 +0530
+
+    staff_meta_get
+
+[33mcommit 74d139f24cf9a9af18520b2e127c39ec7fe4f3c8[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Tue Oct 29 14:01:25 2024 +0530
+
+    handling resend otp-77
+
+[33mcommit 9b8939d065a3ecad2509ff0357dd88c0da463fe0[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Tue Oct 29 13:53:03 2024 +0530
+
+    handling resend otp-6
+
+[33mcommit 11d0479077f41732fcbae3e29fd3c63184b132c5[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Tue Oct 29 13:45:57 2024 +0530
+
+    handling resend otp-5
+
+[33mcommit 66dae9fcf09f1bbe9a5f2350fd0a040c4fd967e5[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Tue Oct 29 13:42:42 2024 +0530
+
+    handling resend otp-4
+
+[33mcommit 6dbcf437af71fb0e21b2eea87623700cc8c01287[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Tue Oct 29 13:41:30 2024 +0530
+
+    handling resend otp-3
+
+[33mcommit 083ac16a83aefc202531aa7ba6534e74dfe6b2c8[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Tue Oct 29 13:39:26 2024 +0530
+
+    handling resend otp-2
+
+[33mcommit 322efbf67fdbdddabc774be45b1b92a3cbfcdfb2[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Tue Oct 29 12:46:59 2024 +0530
+
+    handling resend otp-1
+
+[33mcommit fdea48d5c38eaedb505ceca113d427309c024fb6[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Tue Oct 29 12:35:48 2024 +0530
+
+    handling resend otp
+
+[33mcommit fb642c98582d90c1c94472380ee011e78189508d[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Tue Oct 29 10:08:47 2024 +0530
+
+    29-10-2024 patient controller
+
+[33mcommit b1824ec1828f8daf8075d993e8e39abf0aa2f62c[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Mon Oct 28 18:06:10 2024 +0530
+
+    get profile controller updated-6
+
+[33mcommit a4238184bef939d891eb08fc3aadad81f2edc90a[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Mon Oct 28 17:57:47 2024 +0530
+
+    get profile controller updated-5
+
+[33mcommit 97b15f21a159d09bbea7c813f8856e19f99c5c40[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Mon Oct 28 17:51:21 2024 +0530
+
+    get profile controller updated-4
+
+[33mcommit e312147fd78fd2ad1eae2983acec2658a41530b2[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Mon Oct 28 15:29:17 2024 +0530
+
+    get profile controller updated-3
+
+[33mcommit 2b4d09bf684140b121716a29ae7f11ef69f554ef[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Mon Oct 28 15:28:52 2024 +0530
+
+    get profile controller updated-2
+
+[33mcommit 94b26396f338b17e5eb7b218dbe6437ea6201cc9[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Mon Oct 28 15:25:04 2024 +0530
+
+    get profile controller updated-1
+
+[33mcommit 4c4488f86b974d55fdce4d1b720bcff3da18f634[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Mon Oct 28 14:56:03 2024 +0530
+
+    get profile controller updated
+
+[33mcommit 81f5f7f88012cd31c3a296e71ace8f72a2fb7271[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Mon Oct 28 09:20:26 2024 +0000
+
+    cleared django jwt import error
+
+[33mcommit 5efa5f192214a0c0bdb28600f63527bbbef48e8e[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Mon Oct 28 14:47:44 2024 +0530
+
+    Profile Serializer updated
+
+[33mcommit 949e760dc2a72dd5acc483af1e35453ee62e8fa5[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Fri Oct 25 11:07:43 2024 +0000
+
+    added ec2 packages
+
+[33mcommit f1383989d6807cdbcc01f8fd25831720d3dcbe24[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Fri Oct 25 15:49:07 2024 +0530
+
+    profile page
+
+[33mcommit 2dd4ba5f801cd799c3cc3ae5e27aabba73b845bc[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Fri Oct 25 13:13:24 2024 +0530
+
+    Authentication-11
+
+[33mcommit 43851e3397c41ac729fe8dc51194aabeb9a4a854[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Fri Oct 25 13:11:23 2024 +0530
+
+    Authentication-10
+
+[33mcommit 865f521892e3c87ed25a1050252fc2efb19217d2[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Fri Oct 25 13:10:27 2024 +0530
+
+    Authentication-9
+
+[33mcommit 40a5a621b05763501b0e19ada40ba1cd0e82d971[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Fri Oct 25 07:11:59 2024 +0000
+
+    remove ec2ven from gitignore
+
+[33mcommit ba9b6b011a231e95f4240c278c1afdec78f7eab6[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Fri Oct 25 12:40:32 2024 +0530
+
+    Authentication-8
+
+[33mcommit ce709ee837a51c408ef9aeb85b908052bf7c496a[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Fri Oct 25 12:37:15 2024 +0530
+
+    Authentication-7
+
+[33mcommit bde4b49f367d33a2b01293e13cb09b6b3e9c1e5f[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Fri Oct 25 12:30:49 2024 +0530
+
+    Authentication-6
+
+[33mcommit 02ba3adc7ec6e99f683e4b192e401d053df1adf9[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Fri Oct 25 12:29:51 2024 +0530
+
+    Authentication-5
+
+[33mcommit 9882768b2e6f5757180433a0887b044e40414254[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Fri Oct 25 12:16:54 2024 +0530
+
+    Authentication-4
+
+[33mcommit 0903c944df14387d57837ebf0b27d0c04e310991[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Fri Oct 25 12:14:22 2024 +0530
+
+    Authentication-3
+
+[33mcommit e7d60182484585024b0cb8ed8833ca097240e0fe[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Fri Oct 25 12:07:13 2024 +0530
+
+    Authentication-2
+
+[33mcommit bae3caa87a7f5b96687fbe53e0aaa2a6a7f3e2dc[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Fri Oct 25 11:59:11 2024 +0530
+
+    Authentication-1
+
+[33mcommit 8bd2d7f7de500d1f146b6bf1a36151a6e55fd7ca[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Fri Oct 25 11:56:52 2024 +0530
+
+    Authentication
+
+[33mcommit 4ebf941e00269c5bb3f812d51eb94745b02d4381[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Fri Oct 25 11:46:59 2024 +0530
+
+    Patient table name changed
+
+[33mcommit 6750fc57c582bae01c07e61444cd34e259790e70[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Thu Oct 24 18:38:36 2024 +0530
+
+    setting
+
+[33mcommit b06b5e5bec77e996b9a5eff6f6d9328e749e2255[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Thu Oct 24 18:36:51 2024 +0530
+
+    setting
+
+[33mcommit e23086886a765b992d0e7d2e29de468ce19f03f3[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Thu Oct 24 18:24:53 2024 +0530
+
+    setting
+
+[33mcommit f34a9530e28a2f5c94381099216072926a211b78[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Thu Oct 24 16:35:27 2024 +0530
+
+    migrations updated
+
+[33mcommit 6f34bc09ff79676abe3c67f45917ebd066bf10a4[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Thu Oct 24 15:23:11 2024 +0530
+
+    settings
+
+[33mcommit c549a3bb14618a5ed51b097dcefb250a47e173d8[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Thu Oct 24 15:15:49 2024 +0530
+
+    connected mysql-1
+
+[33mcommit 63c31bbc3e72b012bc1595a5dd8eae4b44614c16[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Thu Oct 24 15:12:06 2024 +0530
+
+    connected mysql
+
+[33mcommit b6f635f2d7333ade656a6260c232c53f26e1afb1[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Thu Oct 24 13:11:26 2024 +0530
+
+    added requirements
+
+[33mcommit e4a0677790e91b75ee8b12af972132c38373e25b[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Thu Oct 24 13:09:46 2024 +0530
+
+    remove requirements
+
+[33mcommit 47bb1d3f0da5684cd1e524934c68931e145e7aa1[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Thu Oct 24 07:34:29 2024 +0000
+
+    Add venv to .gitignore
+
+[33mcommit c29e3948514f5af2e274e5cd00c975f2570d4cb2[m
+Author: Ubuntu <ubuntu@ip-172-31-29-215.ap-south-1.compute.internal>
+Date:   Thu Oct 24 06:56:16 2024 +0000
+
+    Update .gitignore and remove ignored files
+
+[33mcommit d0ec43715cf1ed0f3097eca3585f049eecc0be9d[m
+Author: ivyis777 <contact@ivyisark.com>
+Date:   Thu Oct 24 12:18:27 2024 +0530
+
+    Add .gitignore file
+
+[33mcommit 2ac410cd0caaad844bd2715b8f588f522c1bd751[m
+Author: Gourav <gouravneo8@gmail.com>
+Date:   Thu Oct 24 10:57:40 2024 +0530
+
+    first commit
