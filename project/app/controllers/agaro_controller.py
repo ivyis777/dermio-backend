@@ -1,6 +1,7 @@
 from django.http import JsonResponse
 from agora_token_builder import RtcTokenBuilder
-import time
+import time,json
+
 
 # Replace with your Agora App ID and App Certificate
 APP_ID = "b6940195c7224675aa60a2fe48e2c185"
@@ -12,8 +13,12 @@ def generate_agora_token(request):
     Generates an Agora token for the patient-doctor appointment session.
     """
     # Extract appointment details
-    appointment_id = request.GET.get("appointmentId")  # Example: 12345
-    user_id = request.GET.get("userId")  # User ID for the patient/doctor
+    data = json.loads(request.body)
+    print("data :",data)
+
+
+    appointment_id = request.data.get("appointmentId")  # Example: 12345
+    user_id = request.data.get("userId")  # User ID for the patient/doctor
 
     if not appointment_id or not user_id:
         return JsonResponse({"error": "appointmentId and userId are required"}, status=400)
