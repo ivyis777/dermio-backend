@@ -28,6 +28,8 @@ urlpatterns = [
     path("promotions/",include("app.urls.promotion_urls")),
     path("notifications/", include('app.urls.notification_urls'))   ,
     path("wallet/", include('app.urls.wallet_urls'))   ,
+    path("agaro/", include('app.urls.agaro_urls'))   ,
+
 
 
 
