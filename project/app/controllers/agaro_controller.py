@@ -17,8 +17,8 @@ def generate_agora_token(request):
     print("data :",data)
 
 
-    appointment_id = request.data.get("appointmentId")  # Example: 12345
-    user_id = request.data.get("userId")  # User ID for the patient/doctor
+    appointment_id = request.GET.get("appointmentId")  # Example: 12345
+    user_id = request.GET.get("userId")  # User ID for the patient/doctor
 
     if not appointment_id or not user_id:
         return JsonResponse({"error": "appointmentId and userId are required"}, status=400)
